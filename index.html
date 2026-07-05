@@ -583,9 +583,7 @@
             <a href="#" onclick="toggleMenu()">AGI</a>
             <a href="#" onclick="toggleMenu()">Semiconductors</a>
             <a href="#" onclick="toggleMenu()">Profit Extraction</a>
-            <a href="#" onclick="toggleMenu()"
-              >Aientic Ultra (theoretical)</a
-            >
+            <a href="#" onclick="toggleMenu()">Aientic Ultra (theoretical)</a>
           </div>
         </div>
         <div class="mobile-nav-item">
@@ -612,8 +610,9 @@
           </button>
           <div class="mobile-sub">
             <a href="#" onclick="toggleMenu()">Free (we lose money)</a>
-            <a href="#" onclick="toggleMenu()">Pro — $9,999/mo</a>
-            <a href="#" onclick="toggleMenu()">Enterprise (please call)</a>
+            <a href="#" onclick="toggleMenu()">Pro — (with limits)</a>
+            <a href="#" onclick="toggleMenu()">Enterprise (we charge per token)</a>
+            <a href="#" onclick="toggleMenu()">Government (give gov contract)</a>
           </div>
         </div>
         <div class="mobile-nav-item">
@@ -664,20 +663,12 @@
         <h2 class="animate-in">The results speak for themselves.</h2>
         <p class="subtitle animate-in">Zucc, give us 1 billion dollard</p>
         <h3
-          style="
-            font-size: 1.75rem;
-            margin: 3rem 0 1.5rem;
-            font-style: italic;
-          "
+          style="font-size: 1.75rem; margin: 3rem 0 1.5rem; font-style: italic"
         >
           FAQ
         </h3>
         <div class="faq-item">
-          <button
-            type="button"
-            onclick="toggleFAQ(this)"
-            aria-expanded="false"
-          >
+          <button type="button" onclick="toggleFAQ(this)" aria-expanded="false">
             <span>Is this website even real?</span>
             <span class="faq-icon">
               <svg
@@ -700,11 +691,7 @@
           </div>
         </div>
         <div class="faq-item">
-          <button
-            type="button"
-            onclick="toggleFAQ(this)"
-            aria-expanded="false"
-          >
+          <button type="button" onclick="toggleFAQ(this)" aria-expanded="false">
             <span>Are you alpha or sigma?</span>
             <span class="faq-icon">
               <svg
@@ -727,11 +714,7 @@
           </div>
         </div>
         <div class="faq-item">
-          <button
-            type="button"
-            onclick="toggleFAQ(this)"
-            aria-expanded="false"
-          >
+          <button type="button" onclick="toggleFAQ(this)" aria-expanded="false">
             <span>You're just here to make money, aren't you?</span>
             <span class="faq-icon">
               <svg
@@ -752,11 +735,7 @@
           </div>
         </div>
         <div class="faq-item">
-          <button
-            type="button"
-            onclick="toggleFAQ(this)"
-            aria-expanded="false"
-          >
+          <button type="button" onclick="toggleFAQ(this)" aria-expanded="false">
             <span>Did AI make this site?</span>
             <span class="faq-icon">
               <svg
@@ -862,9 +841,7 @@
         const isActive = item.classList.contains("active");
         document.querySelectorAll(".faq-item").forEach((faq) => {
           faq.classList.remove("active");
-          faq
-            .querySelector("button")
-            .setAttribute("aria-expanded", "false");
+          faq.querySelector("button").setAttribute("aria-expanded", "false");
         });
         if (!isActive) {
           item.classList.add("active");
