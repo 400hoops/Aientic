@@ -3,983 +3,897 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aientic - We want to profit off AI hype too</title>
     <style>
+      :root {
+        --color-bg: #f8f8f6;
+        --color-fg: #000;
+        --color-dark: #000;
+        --color-light-panel: #ffffff;
+        --color-white: #fff;
+        --color-muted: #666;
+        --color-muted-light: #999;
+        --color-faint: #454545;
+        --color-border: #222;
+        --color-border-light: #eee;
+        --font-serif: "Times New Roman", Times, serif;
+        --transition-smooth: 0.3s ease;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
       body {
-        background-color: white;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        max-width: 100%;
+      }
+      body {
+        font-family: var(--font-serif);
+        color: var(--color-fg);
+        background: var(--color-bg);
+        line-height: 1.5;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 clamp(2rem, 5vw, 5rem);
+      }
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(248, 248, 246, 0);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        transition: background var(--transition-smooth);
+      }
+      header.dark-nav {
+        background: rgba(0, 0, 0, 0.5);
+      }
+      header.dark-nav .navbar,
+      header.dark-nav .logo,
+      header.dark-nav .nav-links a,
+      header.dark-nav .menu-toggle svg {
+        color: var(--color-white);
+        stroke: var(--color-white);
+      }
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        padding: 1rem 0;
+      }
+      .logo {
+        font-size: 1.25rem;
+        font-weight: 700;
+        font-style: italic;
+        white-space: nowrap;
+        padding: 1rem;
+        flex-shrink: 0;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .nav-item {
+        position: relative;
+      }
+      .nav-links a {
+        opacity: 0.7;
+        transition: opacity var(--transition-smooth);
+      }
+      .nav-links a:hover {
+        opacity: 1;
+      }
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding-top: 1.25rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-6px);
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s ease,
+          visibility 0.2s;
+        z-index: 200;
+      }
+      .nav-item:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown-inner {
+        background: var(--color-light-panel);
+        border-radius: 12px;
+        padding: 1.75rem;
+        display: flex;
+        gap: 2.5rem;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+        white-space: normal;
+      }
+      header.dark-nav .dropdown-inner {
+        background: #333;
+      }
+      .dropdown-col {
+        min-width: 150px;
+      }
+      .dropdown-col h4 {
+        font-size: 0.7rem;
+        font-weight: bold;
+        font-style: italic;
+        color: var(--color-faint);
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        margin-bottom: 0.75rem;
+      }
+      header.dark-nav .dropdown-col h4 {
+        color: #ccc;
+      }
+      .dropdown-col a {
+        display: block;
+        color: #000;
+        font-size: 0.95rem;
+        opacity: 1;
+        padding: 0.4rem 0;
+        transition: color 0.2s;
+      }
+      .dropdown-col a:hover {
+        text-decoration: underline;
+      }
+      header.dark-nav .dropdown-col a {
+        color: var(--color-white);
+      }
+      .nav-auth {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-left: auto;
+        padding: 1rem;
+        flex-shrink: 0;
+      }
+      .nav-auth button {
+        padding: 0.5rem 1.5rem;
+        border-radius: 9999px;
+        border: none;
+        background: var(--color-dark);
+        color: var(--color-white);
+        font-family: inherit;
+        font-size: 1rem;
+        cursor: pointer;
+        transition:
+          background 0.3s ease,
+          color 0.3s ease;
+      }
+      .nav-auth button:hover {
+        background: #333;
+      }
+      header.dark-nav .nav-auth button {
+        background: var(--color-white);
+        color: var(--color-dark);
+      }
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-left: auto;
+        padding: 1rem;
+        flex-shrink: 0;
+      }
+      .hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 7rem 0 clamp(8rem, 12vw, 12rem);
+      }
+      .hero h1 {
+        font-size: clamp(2.75rem, 6vw, 3.5rem);
+        line-height: 1.2;
+        max-width: 700px;
+        margin: 2rem auto 1.5rem;
+        font-weight: normal;
+      }
+      .hero p {
+        font-size: 1.4rem;
+        color: var(--color-muted);
+        font-style: italic;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .dark-content {
+        background: var(--color-dark);
+        color: var(--color-white);
+        padding: 6rem 0;
+      }
+      .dark-content .content {
+        max-width: 60rem;
+        margin: 0 auto;
+      }
+      .dark-content h2 {
+        font-size: clamp(2.25rem, 5vw, 3rem);
+        font-weight: normal;
+        font-style: italic;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      .dark-content .subtitle {
+        font-size: 1.15rem;
+        font-style: italic;
+        font-weight: normal;
+        color: var(--color-muted-light);
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+      .faq-item {
+        border-top: 1px solid #333;
+        padding: 1.5rem 0;
+      }
+      .faq-item button {
+        width: 100%;
+        text-align: left;
+        background: none;
+        border: none;
+        color: inherit;
+        font-family: inherit;
+        font-size: 1.15rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        cursor: pointer;
+      }
+      .faq-item button span:first-child {
+        font-style: italic;
+      }
+      .faq-answer {
+        overflow: hidden;
+        max-height: 0;
+        transition:
+          max-height 0.3s ease,
+          padding 0.3s ease;
+      }
+      .faq-item.active .faq-answer {
+        max-height: 150px;
+        padding-top: 1rem;
+      }
+      .faq-icon {
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+      }
+      .faq-item.active .faq-icon {
+        transform: rotate(180deg);
+      }
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--color-white);
+        display: flex;
+        flex-direction: column;
+        z-index: 300;
+        visibility: hidden;
+        transform: translateX(100%);
+        transition:
+          transform 0.3s ease,
+          visibility 0.3s ease;
+        overflow-y: auto;
+        padding-top: 5rem;
+      }
+      .mobile-menu.open {
+        visibility: visible;
+        transform: translateX(0);
+      }
+      .mobile-menu-body {
+        padding: 0 1.5rem 3rem;
+      }
+      .mobile-nav-item {
+        border-top: 1px solid #eee;
+      }
+      .mobile-nav-item:last-of-type {
+        border-bottom: 1px solid #eee;
+      }
+      .mobile-nav-toggle {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        background: none;
+        border: none;
+        font-family: inherit;
+        font-size: 1.4rem;
+        color: #000;
+        padding: 1.15rem 0;
+        cursor: pointer;
+        text-align: left;
+      }
+      .mobile-chevron {
+        flex-shrink: 0;
+        color: #999;
+        transition: transform 0.3s ease;
+      }
+      .mobile-nav-item.active .mobile-chevron {
+        transform: rotate(180deg);
+      }
+      .mobile-sub {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .mobile-nav-item.active .mobile-sub {
+        max-height: 30rem;
+        padding-bottom: 1rem;
+      }
+      .mobile-sub a {
+        display: block;
+        padding: 0.5rem 0;
+        font-size: 1rem;
+        color: #666;
+      }
+      .mobile-auth {
+        padding: 1.5rem 0 1rem;
+      }
+      .mobile-auth button {
+        width: 100%;
+        padding: 0.9rem;
+        border-radius: 9999px;
+        background: var(--color-dark);
+        color: var(--color-white);
+        border: none;
+        font-family: inherit;
+        font-size: 1.1rem;
+        cursor: pointer;
+      }
+      footer {
+        background: var(--color-dark);
+        color: var(--color-muted-light);
+        border-top: 1px solid var(--color-border);
+        font-size: 0.9rem;
+      }
+      .footer-main {
+        padding: 5rem 1.5rem 3rem;
+        display: grid;
+        grid-template-columns: minmax(220px, 1.4fr) repeat(
+            auto-fit,
+            minmax(140px, 1fr)
+          );
+        gap: 2.5rem;
+      }
+      @media (max-width: 768px) {
+        .footer-main {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+      }
+      .footer-brand .logo {
+        padding: 0;
+        display: inline-block;
+        margin-bottom: 1rem;
+        color: #fff;
+        font-size: 1.25rem;
+      }
+      .footer-brand p {
+        font-size: 0.85rem;
+        font-style: italic;
+        color: #777;
+        max-width: 220px;
+        line-height: 1.5;
+      }
+      .footer-col h4 {
+        color: #fff;
+        font-size: 0.85rem;
+        font-weight: normal;
+        font-style: italic;
+        margin-bottom: 1.1rem;
+      }
+      .footer-col a {
+        display: block;
+        font-size: 0.9rem;
+        color: #999;
+        padding: 0.4rem 0;
+        transition: color 0.2s;
+      }
+      .footer-col a:hover {
+        color: #fff;
+      }
+      .footer-bottom {
+        padding: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.8rem;
+      }
+      @media (max-width: 640px) {
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+      .animate-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .animate-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .delay-1 {
+        transition-delay: 0.2s;
+      }
+      .delay-2 {
+        transition-delay: 0.5s;
+      }
+      @media (max-width: 550px) {
+        .nav-links,
+        .nav-auth {
+          display: none;
+        }
+        .menu-toggle {
+          display: block;
+        }
+      }
+      @media (min-width: 851px) {
+        .mobile-menu {
+          display: none;
+        }
       }
     </style>
-    <!doctype html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Aientic - We want to profit off AI hype too</title>
-        <style>
-          :root {
-            --color-bg: #f8f8f6;
-            --color-fg: #000;
-            --color-dark: #000;
-            --color-light-panel: #ffffff;
-            --color-white: #fff;
-            --color-muted: #666;
-            --color-muted-light: #999;
-            --color-faint: #454545;
-            --color-border: #222;
-            --color-border-light: #eee;
-            --font-serif: "Times New Roman", Times, serif;
-            --transition-smooth: 0.3s ease;
-          }
-
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-          }
-
-          html,
-          body {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-            max-width: 100%;
-          }
-
-          body {
-            font-family: var(--font-serif);
-            color: var(--color-fg);
-            background: var(--color-bg);
-            line-height: 1.5;
-          }
-
-          a {
-            color: inherit;
-            text-decoration: none;
-          }
-
-          .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 clamp(2rem, 5vw, 5rem);
-          }
-
-          header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(248, 248, 246, 0);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: background var(--transition-smooth);
-          }
-
-          header.dark-nav {
-            background: rgba(0, 0, 0, 0.5);
-          }
-
-          header.dark-nav .navbar,
-          header.dark-nav .logo,
-          header.dark-nav .nav-links a,
-          header.dark-nav .menu-toggle svg {
-            color: var(--color-white);
-            stroke: var(--color-white);
-          }
-
-          .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
-            padding: 1rem 0;
-          }
-
-          .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            font-style: italic;
-            white-space: nowrap;
-            padding: 1rem;
-          }
-
-          .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            white-space: nowrap;
-          }
-
-          .nav-item {
-            position: relative;
-          }
-
-          .nav-links a {
-            opacity: 0.7;
-            transition: opacity var(--transition-smooth);
-          }
-
-          .nav-links a:hover {
-            opacity: 1;
-          }
-
-          .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            padding-top: 1.25rem;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-6px);
-            transition:
-              opacity 0.2s ease,
-              transform 0.2s ease,
-              visibility 0.2s;
-            z-index: 200;
-          }
-
-          .nav-item:hover .dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-          }
-
-          .dropdown-inner {
-            background: var(--color-light-panel);
-            border-radius: 12px;
-            padding: 1.75rem;
-            display: flex;
-            gap: 2.5rem;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
-            white-space: normal;
-          }
-
-          header.dark-nav .dropdown-inner {
-            background: #333;
-          }
-
-          .dropdown-col {
-            min-width: 150px;
-          }
-
-          .dropdown-col h4 {
-            font-size: 0.7rem;
-            font-weight: bold;
-            font-style: italic;
-            color: var(--color-faint);
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            margin-bottom: 0.75rem;
-          }
-
-          header.dark-nav .dropdown-col h4 {
-            color: #ccc;
-          }
-
-          .dropdown-col a {
-            display: block;
-            color: #000;
-            font-size: 0.95rem;
-            opacity: 1;
-            padding: 0.4rem 0;
-            transition: color 0.2s;
-          }
-
-          .dropdown-col a:hover {
-            text-decoration: underline;
-          }
-
-          header.dark-nav .dropdown-col a {
-            color: var(--color-white);
-          }
-
-          .nav-auth {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-left: auto;
-            padding: 1rem;
-          }
-
-          .nav-auth button {
-            padding: 0.5rem 1.5rem;
-            border-radius: 9999px;
-            border: none;
-            background: var(--color-dark);
-            color: var(--color-white);
-            font-family: inherit;
-            font-size: 1rem;
-            cursor: pointer;
-            transition:
-              background 0.3s ease,
-              color 0.3s ease;
-          }
-
-          .nav-auth button:hover {
-            background: #333;
-          }
-
-          header.dark-nav .nav-auth button {
-            background: var(--color-white);
-            color: var(--color-dark);
-          }
-
-          .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            margin-left: auto;
-            padding: 1rem;
-          }
-
-          .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 7rem 0 clamp(8rem, 12vw, 12rem);
-          }
-
-          .hero h1 {
-            font-size: clamp(2.75rem, 6vw, 3.5rem);
-            line-height: 1.2;
-            max-width: 700px;
-            margin: 2rem auto 1.5rem;
-            font-weight: normal;
-          }
-
-          .hero p {
-            font-size: 1.4rem;
-            color: var(--color-muted);
-            font-style: italic;
-            max-width: 600px;
-            margin: 0 auto;
-          }
-
-          .dark-content {
-            background: var(--color-dark);
-            color: var(--color-white);
-            padding: 6rem 0;
-          }
-
-          .dark-content .content {
-            max-width: 60rem;
-            margin: 0 auto;
-          }
-
-          .dark-content h2 {
-            font-size: clamp(2.25rem, 5vw, 3rem);
-            font-weight: normal;
-            font-style: italic;
-            text-align: center;
-            margin-bottom: 1rem;
-          }
-
-          .dark-content .subtitle {
-            font-size: 1.15rem;
-            font-style: italic;
-            font-weight: normal;
-            color: var(--color-muted-light);
-            text-align: center;
-            margin-bottom: 4rem;
-          }
-
-          .faq-item {
-            border-top: 1px solid #333;
-            padding: 1.5rem 0;
-          }
-
-          .faq-item button {
-            width: 100%;
-            text-align: left;
-            background: none;
-            border: none;
-            color: inherit;
-            font-family: inherit;
-            font-size: 1.15rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            cursor: pointer;
-          }
-
-          .faq-item button span:first-child {
-            font-style: italic;
-          }
-
-          .faq-answer {
-            overflow: hidden;
-            max-height: 0;
-            transition:
-              max-height 0.3s ease,
-              padding 0.3s ease;
-          }
-
-          .faq-item.active .faq-answer {
-            max-height: 150px;
-            padding-top: 1rem;
-          }
-
-          .faq-icon {
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-          }
-
-          .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-          }
-
-          .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--color-white);
-            display: flex;
-            flex-direction: column;
-            z-index: 300;
-            visibility: hidden;
-            transform: translateX(100%);
-            transition:
-              transform 0.3s ease,
-              visibility 0.3s ease;
-            overflow-y: auto;
-            padding-top: 5rem;
-          }
-
-          .mobile-menu.open {
-            visibility: visible;
-            transform: translateX(0);
-          }
-
-          .mobile-menu-body {
-            padding: 0 1.5rem 3rem;
-          }
-
-          .mobile-nav-item {
-            border-top: 1px solid #eee;
-          }
-
-          .mobile-nav-item:last-of-type {
-            border-bottom: 1px solid #eee;
-          }
-
-          .mobile-nav-toggle {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            background: none;
-            border: none;
-            font-family: inherit;
-            font-size: 1.4rem;
-            color: #000;
-            padding: 1.15rem 0;
-            cursor: pointer;
-            text-align: left;
-          }
-
-          .mobile-chevron {
-            flex-shrink: 0;
-            color: #999;
-            transition: transform 0.3s ease;
-          }
-
-          .mobile-nav-item.active .mobile-chevron {
-            transform: rotate(180deg);
-          }
-
-          .mobile-sub {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-          }
-
-          .mobile-nav-item.active .mobile-sub {
-            max-height: 30rem;
-            padding-bottom: 1rem;
-          }
-
-          .mobile-sub a {
-            display: block;
-            padding: 0.5rem 0;
-            font-size: 1rem;
-            color: #666;
-          }
-
-          .mobile-auth {
-            padding: 1.5rem 0 1rem;
-          }
-
-          .mobile-auth button {
-            width: 100%;
-            padding: 0.9rem;
-            border-radius: 9999px;
-            background: var(--color-dark);
-            color: var(--color-white);
-            border: none;
-            font-family: inherit;
-            font-size: 1.1rem;
-            cursor: pointer;
-          }
-
-          footer {
-            background: var(--color-dark);
-            color: var(--color-muted-light);
-            border-top: 1px solid var(--color-border);
-            font-size: 0.9rem;
-          }
-
-          .footer-main {
-            padding: 5rem 1.5rem 3rem;
-            display: grid;
-            grid-template-columns: minmax(220px, 1.4fr) repeat(
-                auto-fit,
-                minmax(140px, 1fr)
-              );
-            gap: 2.5rem;
-          }
-
-          @media (max-width: 768px) {
-            .footer-main {
-              grid-template-columns: 1fr;
-              gap: 3rem;
-            }
-          }
-
-          .footer-brand .logo {
-            padding: 0;
-            display: inline-block;
-            margin-bottom: 1rem;
-            color: #fff;
-            font-size: 1.25rem;
-          }
-
-          .footer-brand p {
-            font-size: 0.85rem;
-            font-style: italic;
-            color: #777;
-            max-width: 220px;
-            line-height: 1.5;
-          }
-
-          .footer-col h4 {
-            color: #fff;
-            font-size: 0.85rem;
-            font-weight: normal;
-            font-style: italic;
-            margin-bottom: 1.1rem;
-          }
-
-          .footer-col a {
-            display: block;
-            font-size: 0.9rem;
-            color: #999;
-            padding: 0.4rem 0;
-            transition: color 0.2s;
-          }
-
-          .footer-col a:hover {
-            color: #fff;
-          }
-
-          .footer-bottom {
-            padding: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            font-size: 0.8rem;
-          }
-
-          @media (max-width: 640px) {
-            .footer-bottom {
-              flex-direction: column;
-              text-align: center;
-            }
-          }
-
-          .animate-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition:
-              opacity 0.8s ease,
-              transform 0.8s ease;
-          }
-
-          .animate-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-          }
-
-          .delay-1 {
-            transition-delay: 0.2s;
-          }
-          .delay-2 {
-            transition-delay: 0.5s;
-          }
-
-          @media (max-width: 1024px) {
-            .nav-links,
-            .nav-auth {
-              display: none;
-            }
-            .menu-toggle {
-              display: block;
-            }
-          }
-        </style>
-      </head>
-      <body>
-        <header>
-          <nav>
-            <div class="container navbar">
-              <a href="#" class="logo">Aientic</a>
-              <div class="nav-links">
-                <div class="nav-item">
-                  <a href="#developers">Developers</a>
-                  <div class="dropdown">
-                    <div class="dropdown-inner">
-                      <div class="dropdown-col">
-                        <h4>Products</h4>
-                        <a href="#">Aientic</a>
-                        <a href="#">Aientic 2 (beta, broken)</a>
-                        <a href="#">Aientic Vibes™</a>
-                      </div>
-                      <div class="dropdown-col">
-                        <h4>Features</h4>
-                        <a href="#">Hallucination Mode</a>
-                        <a href="#">Vibe Coding</a>
-                        <a href="#">Confidently Wrong Answers</a>
-                      </div>
-                      <div class="dropdown-col">
-                        <h4>Research</h4>
-                        <a href="#">AGI</a>
-                        <a href="#">Semiconductors</a>
-                        <a href="#">Profit Extraction</a>
-                      </div>
-                    </div>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="container navbar">
+          <a href="#" class="logo">Aientic</a>
+          <div class="nav-links">
+            <div class="nav-item">
+              <a href="#developers">Developers</a>
+              <div class="dropdown">
+                <div class="dropdown-inner">
+                  <div class="dropdown-col">
+                    <h4>Products</h4>
+                    <a href="#">Aientic</a>
+                    <a href="#">Aientic 2 (beta, broken)</a>
+                    <a href="#">Aientic Vibes™</a>
                   </div>
-                </div>
-                <div class="nav-item">
-                  <a href="#pricing">Pricing</a>
-                  <div class="dropdown">
-                    <div class="dropdown-inner">
-                      <div class="dropdown-col">
-                        <h4>Plans</h4>
-                        <a href="#">Free (we lose money)</a>
-                        <a href="#">Pro — (with limits)</a>
-                        <a href="#">Enterprise (we charge per token)</a>
-                        <a href="#">Government (give gov contract)</a>
-                      </div>
-                    </div>
+                  <div class="dropdown-col">
+                    <h4>Features</h4>
+                    <a href="#">Hallucination Mode</a>
+                    <a href="#">Vibe Coding</a>
+                    <a href="#">Confidently Wrong Answers</a>
                   </div>
-                </div>
-                <div class="nav-item">
-                  <a href="#about">About</a>
-                  <div class="dropdown">
-                    <div class="dropdown-inner">
-                      <div class="dropdown-col">
-                        <h4>Company</h4>
-                        <a href="#">Our Story (made up)</a>
-                        <a href="#">Careers (unpaid)</a>
-                        <a href="#">Investor Relations</a>
-                      </div>
-                    </div>
+                  <div class="dropdown-col">
+                    <h4>Research</h4>
+                    <a href="#">AGI</a>
+                    <a href="#">Semiconductors</a>
+                    <a href="#">Profit Extraction</a>
                   </div>
                 </div>
               </div>
-              <div class="nav-auth">
-                <button type="button">Sign up</button>
-              </div>
-              <button
-                type="button"
-                class="menu-toggle"
-                onclick="toggleMenu()"
-                aria-label="Open menu"
-                aria-expanded="false"
-                aria-controls="mobileMenu"
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  aria-hidden="true"
-                >
-                  <path d="M3 12h18M3 6h18M3 18h18" />
-                </svg>
-              </button>
             </div>
-          </nav>
-        </header>
-
-        <div class="mobile-menu" id="mobileMenu">
-          <div class="mobile-menu-body">
-            <div class="mobile-nav-item">
-              <button
-                type="button"
-                class="mobile-nav-toggle"
-                onclick="toggleMobileNav(this)"
-                aria-expanded="false"
-              >
-                <span>Developers</span>
-                <span class="mobile-chevron">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    aria-hidden="true"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </span>
-              </button>
-              <div class="mobile-sub">
-                <a href="#" onclick="toggleMenu()">Aientic</a>
-                <a href="#" onclick="toggleMenu()">Aientic 2 (beta, broken)</a>
-                <a href="#" onclick="toggleMenu()">Aientic Vibes™</a>
-                <a href="#" onclick="toggleMenu()">Hallucination Mode</a>
-                <a href="#" onclick="toggleMenu()">Vibe Coding</a>
-                <a href="#" onclick="toggleMenu()">Confidently Wrong Answers</a>
-                <a href="#" onclick="toggleMenu()">AGI</a>
-                <a href="#" onclick="toggleMenu()">Semiconductors</a>
-                <a href="#" onclick="toggleMenu()">Profit Extraction</a>
-                <a href="#" onclick="toggleMenu()"
-                  >Aientic Ultra (theoretical)</a
-                >
+            <div class="nav-item">
+              <a href="#pricing">Pricing</a>
+              <div class="dropdown">
+                <div class="dropdown-inner">
+                  <div class="dropdown-col">
+                    <h4>Plans</h4>
+                    <a href="#">Free (we lose money)</a>
+                    <a href="#">Pro — (with limits)</a>
+                    <a href="#">Enterprise (we charge per token)</a>
+                    <a href="#">Government (give gov contract)</a>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="mobile-nav-item">
-              <button
-                type="button"
-                class="mobile-nav-toggle"
-                onclick="toggleMobileNav(this)"
-                aria-expanded="false"
-              >
-                <span>Pricing</span>
-                <span class="mobile-chevron">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    aria-hidden="true"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </span>
-              </button>
-              <div class="mobile-sub">
-                <a href="#" onclick="toggleMenu()">Free (we lose money)</a>
-                <a href="#" onclick="toggleMenu()">Pro — $9,999/mo</a>
-                <a href="#" onclick="toggleMenu()">Enterprise (please call)</a>
+            <div class="nav-item">
+              <a href="#about">About</a>
+              <div class="dropdown">
+                <div class="dropdown-inner">
+                  <div class="dropdown-col">
+                    <h4>Company</h4>
+                    <a href="#">Our Story (made up)</a>
+                    <a href="#">Careers (unpaid)</a>
+                    <a href="#">Investor Relations</a>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="mobile-nav-item">
-              <button
-                type="button"
-                class="mobile-nav-toggle"
-                onclick="toggleMobileNav(this)"
-                aria-expanded="false"
+          </div>
+          <div class="nav-auth">
+            <button type="button">Sign up</button>
+          </div>
+          <button
+            type="button"
+            class="menu-toggle"
+            onclick="toggleMenu()"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path d="M3 12h18M3 6h18M3 18h18" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-body">
+        <div class="mobile-nav-item">
+          <button
+            type="button"
+            class="mobile-nav-toggle"
+            onclick="toggleMobileNav(this)"
+            aria-expanded="false"
+          >
+            <span>Developers</span>
+            <span class="mobile-chevron">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
               >
-                <span>About</span>
-                <span class="mobile-chevron">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    aria-hidden="true"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </span>
-              </button>
-              <div class="mobile-sub">
-                <a href="#" onclick="toggleMenu()">Our Story (made up)</a>
-                <a href="#" onclick="toggleMenu()">Careers (unpaid)</a>
-                <a href="#" onclick="toggleMenu()">Investor Relations</a>
-              </div>
-            </div>
-            <div class="mobile-auth">
-              <button type="button" onclick="toggleMenu()">Sign up</button>
-            </div>
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+          </button>
+          <div class="mobile-sub">
+            <a href="#" onclick="toggleMenu()">Aientic</a>
+            <a href="#" onclick="toggleMenu()">Aientic 2 (beta, broken)</a>
+            <a href="#" onclick="toggleMenu()">Aientic Vibes™</a>
+            <a href="#" onclick="toggleMenu()">Hallucination Mode</a>
+            <a href="#" onclick="toggleMenu()">Vibe Coding</a>
+            <a href="#" onclick="toggleMenu()">Confidently Wrong Answers</a>
+            <a href="#" onclick="toggleMenu()">AGI</a>
+            <a href="#" onclick="toggleMenu()">Semiconductors</a>
+            <a href="#" onclick="toggleMenu()">Profit Extraction</a>
+            <a href="#" onclick="toggleMenu()"
+              >Aientic Ultra (theoretical)</a
+            >
           </div>
         </div>
-
-        <section class="hero">
-          <div class="container">
-            <h1 class="animate-in delay-1">
-              We want to profit off<br />AI hype too.
-            </h1>
-            <p class="animate-in delay-2">
-              Please give us money (we have a nice webpage)
+        <div class="mobile-nav-item">
+          <button
+            type="button"
+            class="mobile-nav-toggle"
+            onclick="toggleMobileNav(this)"
+            aria-expanded="false"
+          >
+            <span>Pricing</span>
+            <span class="mobile-chevron">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+          </button>
+          <div class="mobile-sub">
+            <a href="#" onclick="toggleMenu()">Free (we lose money)</a>
+            <a href="#" onclick="toggleMenu()">Pro — $9,999/mo</a>
+            <a href="#" onclick="toggleMenu()">Enterprise (please call)</a>
+          </div>
+        </div>
+        <div class="mobile-nav-item">
+          <button
+            type="button"
+            class="mobile-nav-toggle"
+            onclick="toggleMobileNav(this)"
+            aria-expanded="false"
+          >
+            <span>About</span>
+            <span class="mobile-chevron">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+          </button>
+          <div class="mobile-sub">
+            <a href="#" onclick="toggleMenu()">Our Story (made up)</a>
+            <a href="#" onclick="toggleMenu()">Careers (unpaid)</a>
+            <a href="#" onclick="toggleMenu()">Investor Relations</a>
+          </div>
+        </div>
+        <div class="mobile-auth">
+          <button type="button" onclick="toggleMenu()">Sign up</button>
+        </div>
+      </div>
+    </div>
+    <section class="hero">
+      <div class="container">
+        <h1 class="animate-in delay-1">
+          We want to profit off<br />AI hype too.
+        </h1>
+        <p class="animate-in delay-2">
+          Please give us money (we have a nice webpage)
+        </p>
+      </div>
+    </section>
+    <section class="dark-content" id="darkSection">
+      <div class="container content">
+        <h2 class="animate-in">The results speak for themselves.</h2>
+        <p class="subtitle animate-in">Zucc, give us 1 billion dollard</p>
+        <h3
+          style="
+            font-size: 1.75rem;
+            margin: 3rem 0 1.5rem;
+            font-style: italic;
+          "
+        >
+          FAQ
+        </h3>
+        <div class="faq-item">
+          <button
+            type="button"
+            onclick="toggleFAQ(this)"
+            aria-expanded="false"
+          >
+            <span>Is this website even real?</span>
+            <span class="faq-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p style="color: #ccc; padding: 1rem 0">
+              Yes! It's very real. Very real indeed.
             </p>
           </div>
-        </section>
-
-        <section class="dark-content" id="darkSection">
-          <div class="container content">
-            <h2 class="animate-in">The results speak for themselves.</h2>
-            <p class="subtitle animate-in">Zucc, give us 1 billion dollard</p>
-            <h3
-              style="
-                font-size: 1.75rem;
-                margin: 3rem 0 1.5rem;
-                font-style: italic;
-              "
-            >
-              FAQ
-            </h3>
-            <div class="faq-item">
-              <button
-                type="button"
-                onclick="toggleFAQ(this)"
-                aria-expanded="false"
+        </div>
+        <div class="faq-item">
+          <button
+            type="button"
+            onclick="toggleFAQ(this)"
+            aria-expanded="false"
+          >
+            <span>Are you alpha or sigma?</span>
+            <span class="faq-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
               >
-                <span>Is this website even real?</span>
-                <span class="faq-icon">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    aria-hidden="true"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </span>
-              </button>
-              <div class="faq-answer">
-                <p style="color: #ccc; padding: 1rem 0">
-                  Yes! It's very real. Very real indeed.
-                </p>
-              </div>
-            </div>
-            <div class="faq-item">
-              <button
-                type="button"
-                onclick="toggleFAQ(this)"
-                aria-expanded="false"
-              >
-                <span>Are you alpha or sigma?</span>
-                <span class="faq-icon">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    aria-hidden="true"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </span>
-              </button>
-              <div class="faq-answer">
-                <p style="color: #ccc; padding: 1rem 0">
-                  We're the alpha sigma omega gamma of websites.
-                </p>
-              </div>
-            </div>
-            <div class="faq-item">
-              <button
-                type="button"
-                onclick="toggleFAQ(this)"
-                aria-expanded="false"
-              >
-                <span>You're just here to make money, aren't you?</span>
-                <span class="faq-icon">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    aria-hidden="true"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </span>
-              </button>
-              <div class="faq-answer">
-                <p style="color: #ccc; padding: 1rem 0">Obviously.</p>
-              </div>
-            </div>
-            <div class="faq-item">
-              <button
-                type="button"
-                onclick="toggleFAQ(this)"
-                aria-expanded="false"
-              >
-                <span>Did AI make this site?</span>
-                <span class="faq-icon">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    aria-hidden="true"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </span>
-              </button>
-              <div class="faq-answer">
-                <p style="color: #ccc; padding: 1rem 0">
-                  Yes, and it did a better job than we would have.
-                </p>
-              </div>
-            </div>
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p style="color: #ccc; padding: 1rem 0">
+              We're the alpha sigma omega gamma of websites.
+            </p>
           </div>
-        </section>
-
-        <footer>
-          <div class="container footer-main">
-            <div class="footer-brand">
-              <a href="#" class="logo">Aientic</a>
-              <p>Please give us money.</p>
-            </div>
-            <div class="footer-col">
-              <h4>Products</h4>
-              <a href="#">Aientic</a>
-              <a href="#">Aientic 2</a>
-              <a href="#">Aientic Vibes™</a>
-            </div>
-            <div class="footer-col">
-              <h4>Solutions</h4>
-              <a href="#">Startups (please invest)</a>
-              <a href="#">Enterprise (please invest more)</a>
-              <a href="#">Government (please buy us out)</a>
-            </div>
-            <div class="footer-col">
-              <h4>Resources</h4>
-              <a href="#">Blog (empty)</a>
-              <a href="#">FAQ</a>
-              <a href="#">Support Center (voicemail)</a>
-            </div>
-            <div class="footer-col">
-              <h4>Company</h4>
-              <a href="#">Our Story (made up)</a>
-              <a href="#">Careers (unpaid)</a>
-              <a href="#">Investor Relations</a>
-            </div>
+        </div>
+        <div class="faq-item">
+          <button
+            type="button"
+            onclick="toggleFAQ(this)"
+            aria-expanded="false"
+          >
+            <span>You're just here to make money, aren't you?</span>
+            <span class="faq-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p style="color: #ccc; padding: 1rem 0">Obviously.</p>
           </div>
-          <div class="container footer-bottom">
-            <span>Copythat © 2026 Aientic Inc. All money reserved.</span>
+        </div>
+        <div class="faq-item">
+          <button
+            type="button"
+            onclick="toggleFAQ(this)"
+            aria-expanded="false"
+          >
+            <span>Did AI make this site?</span>
+            <span class="faq-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p style="color: #ccc; padding: 1rem 0">
+              Yes, and it did a better job than we would have.
+            </p>
           </div>
-        </footer>
-
-        <script>
-          const observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add("visible");
-                }
-              });
-            },
-            { threshold: 0.1 },
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container footer-main">
+        <div class="footer-brand">
+          <a href="#" class="logo">Aientic</a>
+          <p>Please give us money.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <a href="#">Aientic</a>
+          <a href="#">Aientic 2</a>
+          <a href="#">Aientic Vibes™</a>
+        </div>
+        <div class="footer-col">
+          <h4>Solutions</h4>
+          <a href="#">Startups (please invest)</a>
+          <a href="#">Enterprise (please invest more)</a>
+          <a href="#">Government (please buy us out)</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="#">Blog (empty)</a>
+          <a href="#">FAQ</a>
+          <a href="#">Support Center (voicemail)</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">Our Story (made up)</a>
+          <a href="#">Careers (unpaid)</a>
+          <a href="#">Investor Relations</a>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>Copythat © 2026 Aientic Inc. All money reserved.</span>
+      </div>
+    </footer>
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document
+        .querySelectorAll(".animate-in")
+        .forEach((el) => observer.observe(el));
+      const navbar = document.querySelector("header");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const darkSection = document.getElementById("darkSection");
+      const footer = document.querySelector("footer");
+      function updateNavbar() {
+        const isMobileMenuOpen = mobileMenu.classList.contains("open");
+        if (isMobileMenuOpen) {
+          navbar.classList.remove("dark-nav");
+        } else {
+          const scrollY = window.scrollY;
+          const transitionZone = 50;
+          const darkSectionTop = darkSection.offsetTop;
+          const footerTop = footer.offsetTop;
+          const isNearDarkSection =
+            scrollY >= darkSectionTop - transitionZone &&
+            scrollY <
+              darkSectionTop + darkSection.offsetHeight + transitionZone;
+          const isNearFooter =
+            scrollY >= footerTop - transitionZone &&
+            scrollY < footerTop + footer.offsetHeight + transitionZone;
+          if (isNearDarkSection || isNearFooter) {
+            navbar.classList.add("dark-nav");
+          } else {
+            navbar.classList.remove("dark-nav");
+          }
+        }
+      }
+      window.addEventListener("scroll", updateNavbar);
+      function toggleFAQ(button) {
+        const item = button.parentElement;
+        const isActive = item.classList.contains("active");
+        document.querySelectorAll(".faq-item").forEach((faq) => {
+          faq.classList.remove("active");
+          faq
+            .querySelector("button")
+            .setAttribute("aria-expanded", "false");
+        });
+        if (!isActive) {
+          item.classList.add("active");
+          button.setAttribute("aria-expanded", "true");
+        }
+      }
+      function toggleMenu() {
+        const menu = document.getElementById("mobileMenu");
+        const isOpen = menu.classList.toggle("open");
+        document
+          .querySelector(".menu-toggle")
+          .setAttribute("aria-expanded", String(isOpen));
+        updateNavbar();
+      }
+      function toggleMobileNav(button) {
+        const item = button.parentElement;
+        const isActive = item.classList.contains("active");
+        document.querySelectorAll(".mobile-nav-item").forEach((el) => {
+          el.classList.remove("active");
+          el.querySelector(".mobile-nav-toggle").setAttribute(
+            "aria-expanded",
+            "false",
           );
-
-          document
-            .querySelectorAll(".animate-in")
-            .forEach((el) => observer.observe(el));
-
-          const navbar = document.querySelector("header");
-          const mobileMenu = document.getElementById("mobileMenu");
-          const darkSection = document.getElementById("darkSection");
-          const footer = document.querySelector("footer");
-
-          function updateNavbar() {
-            const isMobileMenuOpen = mobileMenu.classList.contains("open");
-            if (isMobileMenuOpen) {
-              navbar.classList.remove("dark-nav");
-            } else {
-              const scrollY = window.scrollY;
-              const transitionZone = 50;
-              const darkSectionTop = darkSection.offsetTop;
-              const footerTop = footer.offsetTop;
-              const isNearDarkSection =
-                scrollY >= darkSectionTop - transitionZone &&
-                scrollY <
-                  darkSectionTop + darkSection.offsetHeight + transitionZone;
-              const isNearFooter =
-                scrollY >= footerTop - transitionZone &&
-                scrollY < footerTop + footer.offsetHeight + transitionZone;
-
-              if (isNearDarkSection || isNearFooter) {
-                navbar.classList.add("dark-nav");
-              } else {
-                navbar.classList.remove("dark-nav");
-              }
-            }
-          }
-
-          window.addEventListener("scroll", updateNavbar);
-
-          function toggleFAQ(button) {
-            const item = button.parentElement;
-            const isActive = item.classList.contains("active");
-            document.querySelectorAll(".faq-item").forEach((faq) => {
-              faq.classList.remove("active");
-              faq
-                .querySelector("button")
-                .setAttribute("aria-expanded", "false");
-            });
-            if (!isActive) {
-              item.classList.add("active");
-              button.setAttribute("aria-expanded", "true");
-            }
-          }
-
-          function toggleMenu() {
-            const menu = document.getElementById("mobileMenu");
-            const isOpen = menu.classList.toggle("open");
-            document
-              .querySelector(".menu-toggle")
-              .setAttribute("aria-expanded", String(isOpen));
-            updateNavbar();
-          }
-
-          function toggleMobileNav(button) {
-            const item = button.parentElement;
-            const isActive = item.classList.contains("active");
-            document.querySelectorAll(".mobile-nav-item").forEach((el) => {
-              el.classList.remove("active");
-              el.querySelector(".mobile-nav-toggle").setAttribute(
-                "aria-expanded",
-                "false",
-              );
-            });
-            if (!isActive) {
-              item.classList.add("active");
-              button.setAttribute("aria-expanded", "true");
-            }
-          }
-        </script>
-      </body>
-    </html>
-  </head>
+        });
+        if (!isActive) {
+          item.classList.add("active");
+          button.setAttribute("aria-expanded", "true");
+        }
+      }
+    </script>
+  </body>
 </html>
