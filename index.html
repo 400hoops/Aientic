@@ -4,102 +4,160 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aientic - We want to profit off AI hype too</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
+        --color-accent: #000;
+        --color-accent-dark: #fff;
+        --color-accent-hover: #333;
+        --color-accent-text-dark: #000;
         --color-bg: #f8f8f6;
-        --color-fg: #000;
-        --color-dark: #000;
-        --color-light-panel: #ffffff;
-        --color-white: #fff;
-        --color-muted: #666;
-        --color-muted-light: #999;
-        --color-faint: #454545;
+        --color-bg-dark: #000;
+        --color-bg-overlay: rgba(248, 248, 246, 0);
+        --color-bg-overlay-dark: rgba(0, 0, 0, 0.5);
+        --color-bg-panel: #ffffff;
+        --color-bg-panel-dark: #333;
         --color-border: #222;
+        --color-border-dark: #333;
         --color-border-light: #eee;
-        --font-serif: "Times New Roman", Times, serif;
-        --transition-smooth: 0.3s ease;
+        --color-text-muted: #777;
+        --color-text-muted-dark: #999;
+        --color-text-primary: #000;
+        --color-text-primary-dark: #fff;
+        --color-text-secondary: #666;
+        --color-text-subtitle: #454545;
+        --color-text-subtitle-dark: #ccc;
+        --color-text-tertiary: #999;
+        --font-main: font-family: "Playfair Display", serif;
+        --font-size-3xl: 1.9rem;
+        --font-size-4xl: 3rem;
+        --font-size-base: 1rem;
+        --font-size-lg: 1.1rem;
+        --font-size-sm: 0.95rem;
+        --font-size-xl: 1.25rem;
+        --font-weight-regular: 400;
+        --font-weight-bold: 500;
+        --radius-lg: 9999px;
+        --radius-md: 12px;
+        --space-2xl: 2.5rem;
+        --space-3xl: 3rem;
+        --space-4xl: 4rem;
+        --space-5xl: 5rem;
+        --space-6xl: 6rem;
+        --space-lg: 1.5rem;
+        --space-md: 1rem;
+        --space-sm: 0.5rem;
+        --space-n: 0rem;
+        --space-xl: 2rem;
+        --transition-base: 0.3s ease;
+        --transition-fast: 0.2s ease;
+        --transition-slow: 0.8s ease;
       }
+
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
+
       html,
       body {
         scroll-behavior: smooth;
         overflow-x: hidden;
         max-width: 100%;
       }
+
       body {
-        font-family: var(--font-serif);
-        color: var(--color-fg);
+        font-family: var(--font-main);
+        font-weight: var(--font-weight-regular);
+        font-size: var(--font-size-base);
+        color: var(--color-text-primary);
         background: var(--color-bg);
         line-height: 1.5;
       }
+
       a {
         color: inherit;
         text-decoration: none;
       }
+
       .container {
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 clamp(2rem, 5vw, 5rem);
       }
+
       header {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         z-index: 1000;
-        background: rgba(248, 248, 246, 0);
+        background: var(--color-bg-overlay);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        transition: background var(--transition-smooth);
+        transition: background var(--transition-base);
       }
+
       header.dark-nav {
-        background: rgba(0, 0, 0, 0.5);
+        background: var(--color-bg-overlay-dark);
       }
+
       header.dark-nav .navbar,
       header.dark-nav .logo,
       header.dark-nav .nav-links a,
       header.dark-nav .menu-toggle svg {
-        color: var(--color-white);
+        color: var(--color-text-primary-dark);
       }
+
       .navbar {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 2rem;
-        padding: 1rem 0;
-        max-height: 5.9rem
+        gap: var(--space-xl);
+        padding: var(--space-md) 0;
+        max-height: 5.9rem;
       }
+
       .logo {
-        font-size: 1.25rem;
-        font-weight: 700;
+        font-size: var(--font-size-xl);
         font-style: italic;
+        font-weight: var(--font-weight-bold);
         white-space: nowrap;
-        padding: 1.5rem;
+        padding: var(--space-lg);
+        padding-right: var(--space-md);
         flex-shrink: 0;
         min-width: max-content;
         transition: none;
       }
+
       .nav-links {
         display: flex;
-        gap: 2.5rem;
+        gap: var(--space-2xl);
         white-space: nowrap;
         flex-shrink: 0;
       }
+
       .nav-item {
         position: relative;
       }
+
       .nav-links a {
+        font-size: var(--font-size-base);
         opacity: 0.7;
-        transition: opacity var(--transition-smooth);
+        transition: opacity var(--transition-base);
       }
+
       .nav-links a:hover {
         opacity: 1;
       }
+
       .dropdown {
         position: absolute;
         top: 100%;
@@ -114,102 +172,108 @@
           visibility 0.2s;
         z-index: 200;
       }
+
       .nav-item:hover .dropdown {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
       }
+
       .dropdown-inner {
-        background: var(--color-light-panel);
-        border-radius: 12px;
-        padding: 1.75rem;
+        background: var(--color-bg-panel);
+        border-radius: var(--radius-md);
+        padding: var(--space-lg);
         display: flex;
-        gap: 2.5rem;
+        gap: var(--space-2xl);
         box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
         white-space: normal;
       }
+
       header.dark-nav .dropdown-inner {
-        background: #333;
+        background: var(--color-bg-panel-dark);
       }
+
       .dropdown-col {
         min-width: 150px;
       }
+
       .dropdown-col h4 {
-        font-size: 0.7rem;
-        font-weight: bold;
-        font-style: italic;
-        color: var(--color-faint);
-        text-transform: uppercase;
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+        color: var(--color-text-subtitle);
         letter-spacing: 0.03em;
-        margin-bottom: 0.75rem;
+        margin-bottom: var(--space-sm);
       }
+
       header.dark-nav .dropdown-col h4 {
-        color: #ccc;
+        color: var(--color-text-subtitle-dark);
       }
+
       .dropdown-col a {
         display: block;
-        color: #000;
-        font-size: 0.95rem;
+        font-size: var(--font-size-base);
+        color: var(--color-text-primary);
         opacity: 1;
         padding: 0.4rem 0;
         transition: color 0.2s;
       }
-      .dropdown-col a:hover {
-        text-decoration: underline;
-      }
+
       header.dark-nav .dropdown-col a {
-        color: var(--color-white);
+        color: var(--color-text-primary-dark);
       }
+
       .nav-auth {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: var(--space-md);
         margin-left: auto;
-        padding: 1rem;
+        padding: var(--space-md);
         flex-shrink: 0;
       }
+
       .nav-auth button {
-        padding: 0.5rem 1.5rem;
-        border-radius: 9999px;
+        padding: var(--space-sm) var(--space-lg);
+        border-radius: var(--radius-lg);
         border: none;
-        background: var(--color-dark);
-        color: var(--color-white);
-        font-family: inherit;
-        font-size: 1rem;
+        background: var(--color-accent);
+        color: var(--color-text-primary-dark);
+        font-family: var(--font-main);
+        font-size: var(--font-size-base);
+        font-weight: var(--font-weight-regular);
         cursor: pointer;
         transition:
-          background 0.3s ease,
-          color 0.3s ease;
+          background var(--transition-base),
+          color var(--transition-base);
       }
+
       .nav-auth button:hover {
-        background: #333;
+        background: var(--color-accent-hover);
       }
+
       header.dark-nav .nav-auth button {
-        background: var(--color-white);
-        color: var(--color-dark);
+        background: var(--color-accent-dark);
+        color: var(--color-accent-text-dark);
       }
+
       .menu-toggle {
         display: none;
         background: none;
         border: none;
         cursor: pointer;
         margin-left: auto;
-        padding: 1rem;
+        padding: var(--space-md);
         flex-shrink: 0;
       }
+
       .menu-toggle svg {
-        fill: var(--color-dark);
-        transition: fill 0.3s ease;
+        fill: var(--color-text-primary);
+        transition: fill var(--transition-base);
       }
+
       header.dark-nav .menu-toggle svg {
-        fill: var(--color-white);
+        fill: var(--color-text-primary-dark);
       }
-      .mobile-chevron svg {
-        fill: var(--color-dark);
-      }
-      .faq-icon svg {
-        fill: var(--color-white);
-      }
+
       .hero {
         height: 100vh;
         display: flex;
@@ -217,252 +281,308 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        padding: 7rem 0 clamp(8rem, 12vw, 12rem);
+        padding: var(--space-5xl) 0 clamp(8rem, 12vw, 12rem);
       }
+
       .hero h1 {
-        font-size: clamp(2.75rem, 6vw, 3.5rem);
-        line-height: 1.2;
+        font-size: var(--font-size-4xl);
+        line-height: 1.3;
         max-width: 700px;
-        margin: 2rem auto 1.5rem;
-        font-weight: normal;
+        margin: var(--space-xl) auto var(--space-lg);
+        font-weight: var(--font-weight-regular);
       }
+
       .hero p {
-        font-size: 1.4rem;
-        color: var(--color-muted);
-        font-style: italic;
+        font-size: var(--font-size-xl);
+        color: var(--color-text-secondary);
         max-width: 600px;
         margin: 0 auto;
       }
+
       .dark-content {
-        background: var(--color-dark);
-        color: var(--color-white);
-        padding: 6rem 0;
+        background: var(--color-bg-dark);
+        color: var(--color-text-primary-dark);
+        padding: var(--space-6xl) 0;
       }
+
       .dark-content .content {
         max-width: 60rem;
         margin: 0 auto;
       }
+
       .dark-content h2 {
-        font-size: clamp(2.25rem, 5vw, 3rem);
-        font-weight: normal;
-        font-style: italic;
+        font-size: clamp(1.6rem, 3.5vw, var(--font-size-3xl));
+        font-weight: var(--font-weight-regular);
         text-align: center;
-        margin-bottom: 1rem;
+        margin-bottom: var(--space-md);
       }
+
       .dark-content .subtitle {
-        font-size: 1.15rem;
-        font-style: italic;
-        font-weight: normal;
-        color: var(--color-muted-light);
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-regular);
+        color: var(--color-text-tertiary);
         text-align: center;
-        margin-bottom: 4rem;
+        margin-bottom: var(--space-4xl);
       }
+
+      .faq-heading {
+        font-size: var(--font-size-xl);
+        margin: var(--space-3xl) 0 var(--space-lg);
+        font-weight: var(--font-weight-regular);
+      }
+
       .faq-item {
-        border-top: 1px solid #333;
-        padding: 1.5rem 0;
+        border-top: 1px solid var(--color-border-dark);
+        padding: var(--space-lg) 0;
       }
+
       .faq-item button {
         width: 100%;
         text-align: left;
         background: none;
         border: none;
         color: inherit;
-        font-family: inherit;
-        font-size: 1.15rem;
+        font-family: var(--font-main);
+        font-size: var(--font-size-base);
+        font-weight: var(--font-weight-regular);
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 1rem;
+        gap: var(--space-md);
         cursor: pointer;
       }
-      .faq-item button span:first-child {
-        font-style: italic;
-      }
+
       .faq-answer {
         overflow: hidden;
         max-height: 0;
         transition:
-          max-height 0.3s ease,
-          padding 0.3s ease;
+          max-height var(--transition-base),
+          padding var(--transition-base);
       }
+
       .faq-item.active .faq-answer {
         max-height: 150px;
-        padding-top: 1rem;
+        padding-top: var(--space-md);
       }
+
+      .faq-text {
+        color: var(--color-text-subtitle-dark);
+        padding: var(--space-md) 0;
+      }
+
       .faq-icon {
-        transition: transform 0.3s ease;
+        transition: transform var(--transition-base);
         flex-shrink: 0;
       }
+
+      .faq-icon svg {
+        fill: var(--color-text-primary-dark);
+      }
+
       .faq-item.active .faq-icon {
         transform: rotate(180deg);
       }
+
       .mobile-menu {
         position: fixed;
         top: 0;
         right: 0;
         width: 100%;
         height: 100%;
-        background: var(--color-white);
+        background: var(--color-bg-panel);
         display: flex;
         flex-direction: column;
         z-index: 300;
         visibility: hidden;
         transform: translateX(100%);
         transition:
-          transform 0.3s ease,
-          visibility 0.3s ease;
+          transform var(--transition-base),
+          visibility var(--transition-base);
         overflow-y: auto;
         padding-top: 5rem;
       }
+
       .mobile-menu.open {
         visibility: visible;
         transform: translateX(0);
       }
+
       .mobile-menu-body {
-        padding: 0 1.5rem 3rem;
+        padding: 0 var(--space-lg) var(--space-3xl);
       }
+
       .mobile-nav-item {
-        border-top: 1px solid #eee;
+        border-top: 1px solid var(--color-border-light);
       }
+
       .mobile-nav-item:last-of-type {
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid var(--color-border-light);
       }
+
       .mobile-nav-toggle {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 1rem;
+        gap: var(--space-md);
         background: none;
         border: none;
-        font-family: inherit;
-        font-size: 1.4rem;
-        color: #000;
+        font-family: var(--font-main);
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-regular);
+        color: var(--color-text-primary);
         padding: 1.15rem 0;
         cursor: pointer;
         text-align: left;
       }
+
       .mobile-chevron {
         flex-shrink: 0;
-        color: #999;
-        transition: transform 0.3s ease;
+        color: var(--color-text-tertiary);
+        transition: transform var(--transition-base);
       }
+
+      .mobile-chevron svg {
+        fill: var(--color-text-primary);
+      }
+
       .mobile-nav-item.active .mobile-chevron {
         transform: rotate(180deg);
       }
+
       .mobile-sub {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: max-height var(--transition-base);
       }
+
       .mobile-nav-item.active .mobile-sub {
         max-height: 30rem;
-        padding-bottom: 1rem;
+        padding-bottom: var(--space-md);
       }
+
       .mobile-sub a {
         display: block;
-        padding: 0.5rem 0;
-        font-size: 1rem;
-        color: #666;
+        padding: var(--space-sm) 0;
+        font-size: var(--font-size-base);
+        color: var(--color-text-secondary);
       }
+
       .mobile-auth {
-        padding: 1.5rem 0 1rem;
+        padding: var(--space-lg) 0 var(--space-md);
       }
+
       .mobile-auth button {
         width: 100%;
         padding: 0.9rem;
-        border-radius: 9999px;
-        background: var(--color-dark);
-        color: var(--color-white);
+        border-radius: var(--radius-lg);
+        background: var(--color-accent);
+        color: var(--color-text-primary-dark);
         border: none;
-        font-family: inherit;
-        font-size: 1.1rem;
+        font-family: var(--font-main);
+        font-size: var(--font-size-base);
+        font-weight: var(--font-weight-regular);
         cursor: pointer;
       }
+
       footer {
-        background: var(--color-dark);
-        color: var(--color-muted-light);
+        background: var(--color-bg-dark);
+        color: var(--color-text-muted-dark);
         border-top: 1px solid var(--color-border);
-        font-size: 0.9rem;
+        font-size: var(--font-size-sm);
       }
+
       .footer-main {
-        padding: 5rem 1.5rem 3rem;
+        padding: var(--space-5xl) var(--space-lg) var(--space-3xl);
         display: grid;
         grid-template-columns: minmax(220px, 1.4fr) repeat(
             auto-fit,
             minmax(140px, 1fr)
           );
-        gap: 2.5rem;
+        gap: var(--space-2xl);
       }
+
       @media (max-width: 768px) {
         .footer-main {
           grid-template-columns: 1fr;
-          gap: 3rem;
+          gap: var(--space-3xl);
         }
       }
+
       .footer-brand .logo {
+        font-size: var(--font-size-xl);
+        font-style: italic;
+        font-weight: var(--font-weight-bold);
         padding: 0;
         display: inline-block;
-        margin-bottom: 1rem;
-        color: #fff;
-        font-size: 1.25rem;
+        margin-bottom: var(--space-md);
+        color: var(--color-text-primary-dark);
       }
+
       .footer-brand p {
-        font-size: 0.85rem;
-        font-style: italic;
-        color: #777;
+        font-size: var(--font-size-sm);
+        color: var(--color-text-muted);
         max-width: 220px;
         line-height: 1.5;
       }
+
       .footer-col h4 {
-        color: #fff;
-        font-size: 0.85rem;
-        font-weight: normal;
-        font-style: italic;
+        color: var(--color-text-primary-dark);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
         margin-bottom: 1.1rem;
       }
+
       .footer-col a {
         display: block;
-        font-size: 0.9rem;
-        color: #999;
+        font-size: var(--font-size-sm);
+        color: var(--color-text-muted-dark);
         padding: 0.4rem 0;
-        transition: color 0.2s;
+        transition: color var(--transition-fast);
       }
+
       .footer-col a:hover {
-        color: #fff;
+        color: var(--color-text-primary-dark);
       }
+
       .footer-bottom {
-        padding: 1.5rem;
+        padding: var(--space-lg);
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        gap: 1rem;
-        font-size: 0.8rem;
+        gap: var(--space-md);
+        font-size: var(--font-size-sm);
       }
+
       @media (max-width: 640px) {
         .footer-bottom {
           flex-direction: column;
           text-align: center;
         }
       }
+
       .animate-in {
         opacity: 0;
         transform: translateY(30px);
         transition:
-          opacity 0.8s ease,
-          transform 0.8s ease;
+          opacity var(--transition-slow),
+          transform var(--transition-slow);
       }
+
       .animate-in.visible {
         opacity: 1;
         transform: translateY(0);
       }
+
       .delay-1 {
         transition-delay: 0.2s;
       }
+
       .delay-2 {
         transition-delay: 0.5s;
       }
+
       @media (max-width: 550px) {
         .nav-links,
         .nav-auth {
@@ -472,12 +592,13 @@
           display: block;
         }
       }
+
       @media (min-width: 851px) {
         .mobile-menu {
           display: none;
         }
       }
-      
+
       body.menu-open {
         overflow: hidden;
       }
@@ -553,7 +674,16 @@
             aria-expanded="false"
             aria-controls="mobileMenu"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+            >
+              <path
+                d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+              />
+            </svg>
           </button>
         </div>
       </nav>
@@ -569,7 +699,16 @@
           >
             <span>Developers</span>
             <span class="mobile-chevron">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+              >
+                <path
+                  d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+                />
+              </svg>
             </span>
           </button>
           <div class="mobile-sub">
@@ -594,14 +733,27 @@
           >
             <span>Pricing</span>
             <span class="mobile-chevron">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+              >
+                <path
+                  d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+                />
+              </svg>
             </span>
           </button>
           <div class="mobile-sub">
             <a href="#" onclick="toggleMenu()">Free (we lose money)</a>
             <a href="#" onclick="toggleMenu()">Pro — (with limits)</a>
-            <a href="#" onclick="toggleMenu()">Enterprise (we charge per token)</a>
-            <a href="#" onclick="toggleMenu()">Government (give gov contract)</a>
+            <a href="#" onclick="toggleMenu()"
+              >Enterprise (we charge per token)</a
+            >
+            <a href="#" onclick="toggleMenu()"
+              >Government (give gov contract)</a
+            >
           </div>
         </div>
         <div class="mobile-nav-item">
@@ -613,7 +765,16 @@
           >
             <span>About</span>
             <span class="mobile-chevron">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+              >
+                <path
+                  d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+                />
+              </svg>
             </span>
           </button>
           <div class="mobile-sub">
@@ -641,33 +802,45 @@
       <div class="container content">
         <h2 class="animate-in">The results speak for themselves.</h2>
         <p class="subtitle animate-in">Zucc, give us 1 billion dollard</p>
-        <h3
-          style="font-size: 1.75rem; margin: 3rem 0 1.5rem; font-style: italic"
-        >
-          FAQ
-        </h3>
+        <h3 class="faq-heading animate-in">FAQ</h3>
         <div class="faq-item">
           <button type="button" onclick="toggleFAQ(this)" aria-expanded="false">
             <span>Is this website even real?</span>
             <span class="faq-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+              >
+                <path
+                  d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+                />
+              </svg>
             </span>
           </button>
           <div class="faq-answer">
-            <p style="color: #ccc; padding: 1rem 0">
-              Yes! It's very real. Very real indeed.
-            </p>
+            <p class="faq-text">Yes! It's very real. Very real indeed.</p>
           </div>
         </div>
         <div class="faq-item">
           <button type="button" onclick="toggleFAQ(this)" aria-expanded="false">
             <span>Are you alpha or sigma?</span>
             <span class="faq-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+              >
+                <path
+                  d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+                />
+              </svg>
             </span>
           </button>
           <div class="faq-answer">
-            <p style="color: #ccc; padding: 1rem 0">
+            <p class="faq-text">
               We're the alpha sigma omega gamma of websites.
             </p>
           </div>
@@ -676,22 +849,40 @@
           <button type="button" onclick="toggleFAQ(this)" aria-expanded="false">
             <span>You're just here to make money, aren't you?</span>
             <span class="faq-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+              >
+                <path
+                  d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+                />
+              </svg>
             </span>
           </button>
           <div class="faq-answer">
-            <p style="color: #ccc; padding: 1rem 0">Obviously.</p>
+            <p class="faq-text">Obviously.</p>
           </div>
         </div>
         <div class="faq-item">
           <button type="button" onclick="toggleFAQ(this)" aria-expanded="false">
             <span>Did AI make this site?</span>
             <span class="faq-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+              >
+                <path
+                  d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+                />
+              </svg>
             </span>
           </button>
           <div class="faq-answer">
-            <p style="color: #ccc; padding: 1rem 0">
+            <p class="faq-text">
               Yes, and it did a better job than we would have.
             </p>
           </div>
@@ -790,7 +981,7 @@
       function toggleMenu() {
         const menu = document.getElementById("mobileMenu");
         const isOpen = menu.classList.toggle("open");
-        document.body.classList.toggle('menu-open', isOpen);
+        document.body.classList.toggle("menu-open", isOpen);
         document
           .querySelector(".menu-toggle")
           .setAttribute("aria-expanded", String(isOpen));
@@ -811,13 +1002,13 @@
           button.setAttribute("aria-expanded", "true");
         }
       }
-      
-      // Auto-close mobile menu on desktop
-      window.addEventListener('resize', () => {
+      window.addEventListener("resize", () => {
         if (window.innerWidth > 550) {
-          mobileMenu.classList.remove('open');
-          document.body.classList.remove('menu-open');
-          document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
+          mobileMenu.classList.remove("open");
+          document.body.classList.remove("menu-open");
+          document
+            .querySelector(".menu-toggle")
+            .setAttribute("aria-expanded", "false");
         }
       });
     </script>
