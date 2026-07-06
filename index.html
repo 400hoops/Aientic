@@ -12,7 +12,6 @@
     />
     <style>
       :root {
-        /* Colors */
         --color-accent: #000;
         --color-accent-dark: #fff;
         --color-accent-hover: #333;
@@ -34,9 +33,7 @@
         --color-text-subtitle: #454545;
         --color-text-subtitle-dark: #ccc;
         --color-text-tertiary: #999;
-
-        /* Typography */
-        --font-main: "Playfair Display", serif;
+        --font-main: font-family: "Playfair Display", serif;
         --font-size-4xl: 3rem;
         --font-size-3xl: 2rem;
         --font-size-xl: 1.5rem;
@@ -45,8 +42,6 @@
         --font-size-sm: 1rem;
         --font-weight-bold: 500;
         --font-weight-regular: 400;
-
-        /* Spacing & Layout */
         --radius-lg: 9999px;
         --radius-md: 12px;
         --space-6xl: 4.5rem;
@@ -59,8 +54,6 @@
         --space-md: 1rem;
         --space-sm: 0.5rem;
         --space-n: 0rem;
-
-        /* Animation */
         --transition-slow: 0.8s ease;
         --transition-base: 0.3s ease;
         --transition-fast: 0.2s ease;
@@ -100,7 +93,6 @@
         padding: 0 clamp(2rem, 5vw, 5rem);
       }
 
-      /* Header */
       header {
         position: fixed;
         top: 0;
@@ -166,7 +158,6 @@
         opacity: 1;
       }
 
-      /* Dropdowns */
       .dropdown {
         position: absolute;
         top: 100%;
@@ -231,7 +222,6 @@
         color: var(--color-text-primary-dark);
       }
 
-      /* Auth Button */
       .nav-auth {
         display: flex;
         align-items: center;
@@ -265,7 +255,6 @@
         color: var(--color-accent-text-dark);
       }
 
-      /* Mobile Toggle */
       .menu-toggle {
         display: none;
         background: none;
@@ -285,7 +274,6 @@
         fill: var(--color-text-primary-dark);
       }
 
-      /* Hero */
       .hero {
         height: 100vh;
         display: flex;
@@ -311,26 +299,25 @@
         margin: 0 auto;
       }
 
-      /* Results Section (formerly dark-content) */
-      .results-section {
+      .dark-content {
         background: var(--color-bg-dark);
         color: var(--color-text-primary-dark);
         padding: var(--space-6xl) 0;
       }
 
-      .results-section .content {
+      .dark-content .content {
         max-width: 60rem;
         margin: 0 auto;
       }
 
-      .results-section h2 {
+      .dark-content h2 {
         font-size: clamp(1.6rem, 3.5vw, var(--font-size-3xl));
         font-weight: var(--font-weight-regular);
         margin-top: var(--space-2xl);
         text-align: center;
       }
 
-      .results-section .subtitle {
+      .dark-content .subtitle {
         font-size: var(--font-size-xl);
         font-weight: var(--font-weight-regular);
         color: var(--color-text-tertiary);
@@ -338,19 +325,18 @@
         margin-bottom: var(--space-4xl);
       }
 
-      /* Accordion (formerly FAQ) */
-      .section-heading {
+      .faq-heading {
         font-size: var(--font-size-3xl);
         margin: var(--space-3xl) 0 var(--space-lg);
         font-weight: var(--font-weight-regular);
       }
 
-      .accordion-item {
+      .faq-item {
         border-top: 1px solid var(--color-border-dark);
         padding: var(--space-lg) 0;
       }
 
-      .accordion-toggle {
+      .faq-item button {
         width: 100%;
         text-align: left;
         background: none;
@@ -366,7 +352,7 @@
         cursor: pointer;
       }
 
-      .accordion-content {
+      .faq-answer {
         overflow: hidden;
         max-height: 0;
         transition:
@@ -374,31 +360,30 @@
           padding var(--transition-base);
       }
 
-      .accordion-item.active .accordion-content {
+      .faq-item.active .faq-answer {
         max-height: 150px;
         padding-top: var(--space-md);
       }
 
-      .accordion-text {
+      .faq-text {
         color: var(--color-text-subtitle-dark);
         padding: var(--space-md) 0;
       }
 
-      .accordion-icon {
+      .faq-icon {
         transition: transform var(--transition-base);
         flex-shrink: 0;
       }
 
-      .accordion-icon svg {
+      .faq-icon svg {
         fill: var(--color-text-primary-dark);
       }
 
-      .accordion-item.active .accordion-icon {
+      .faq-item.active .faq-icon {
         transform: rotate(180deg);
       }
 
-      /* Mobile Menu */
-      .mobile-nav {
+      .mobile-menu {
         position: fixed;
         top: 0;
         right: 0;
@@ -417,12 +402,12 @@
         padding-top: 5rem;
       }
 
-      .mobile-nav.open {
+      .mobile-menu.open {
         visibility: visible;
         transform: translateX(0);
       }
 
-      .mobile-nav-body {
+      .mobile-menu-body {
         padding: 0 var(--space-lg) var(--space-3xl);
       }
 
@@ -500,7 +485,6 @@
         cursor: pointer;
       }
 
-      /* Footer */
       footer {
         background: var(--color-bg-dark);
         color: var(--color-text-muted-dark);
@@ -578,7 +562,6 @@
         }
       }
 
-      /* Utilities */
       .animate-in {
         opacity: 0;
         transform: translateY(30px);
@@ -600,7 +583,6 @@
         transition-delay: 0.5s;
       }
 
-      /* Responsive */
       @media (max-width: 550px) {
         .nav-links,
         .nav-auth {
@@ -612,7 +594,7 @@
       }
 
       @media (min-width: 851px) {
-        .mobile-nav {
+        .mobile-menu {
           display: none;
         }
       }
@@ -682,11 +664,12 @@
             </div>
           </div>
           <div class="nav-auth">
-            <button type="button" class="auth-btn">Sign up</button>
+            <button type="button">Sign up</button>
           </div>
           <button
             type="button"
             class="menu-toggle"
+            onclick="toggleMenu()"
             aria-label="Open menu"
             aria-expanded="false"
             aria-controls="mobileMenu"
@@ -705,11 +688,15 @@
         </div>
       </nav>
     </header>
-
-    <div class="mobile-nav" id="mobileMenu">
-      <div class="mobile-nav-body">
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-body">
         <div class="mobile-nav-item">
-          <button type="button" class="mobile-nav-toggle" aria-expanded="false">
+          <button
+            type="button"
+            class="mobile-nav-toggle"
+            onclick="toggleMobileNav(this)"
+            aria-expanded="false"
+          >
             <span>Developers</span>
             <span class="mobile-chevron">
               <svg
@@ -725,19 +712,24 @@
             </span>
           </button>
           <div class="mobile-sub">
-            <a href="#">Aientic</a>
-            <a href="#">Aientic 2 (beta, broken)</a>
-            <a href="#">Aientic Vibes™</a>
-            <a href="#">Hallucination Mode</a>
-            <a href="#">Vibe Coding</a>
-            <a href="#">Confidently Wrong Answers</a>
-            <a href="#">AGI</a>
-            <a href="#">Semiconductors</a>
-            <a href="#">Profit Extraction</a>
+            <a href="#" onclick="toggleMenu()">Aientic</a>
+            <a href="#" onclick="toggleMenu()">Aientic 2 (beta, broken)</a>
+            <a href="#" onclick="toggleMenu()">Aientic Vibes™</a>
+            <a href="#" onclick="toggleMenu()">Hallucination Mode</a>
+            <a href="#" onclick="toggleMenu()">Vibe Coding</a>
+            <a href="#" onclick="toggleMenu()">Confidently Wrong Answers</a>
+            <a href="#" onclick="toggleMenu()">AGI</a>
+            <a href="#" onclick="toggleMenu()">Semiconductors</a>
+            <a href="#" onclick="toggleMenu()">Profit Extraction</a>
           </div>
         </div>
         <div class="mobile-nav-item">
-          <button type="button" class="mobile-nav-toggle" aria-expanded="false">
+          <button
+            type="button"
+            class="mobile-nav-toggle"
+            onclick="toggleMobileNav(this)"
+            aria-expanded="false"
+          >
             <span>Pricing</span>
             <span class="mobile-chevron">
               <svg
@@ -753,14 +745,23 @@
             </span>
           </button>
           <div class="mobile-sub">
-            <a href="#">Free (we lose money)</a>
-            <a href="#">Pro — (with limits)</a>
-            <a href="#">Enterprise (we charge per token)</a>
-            <a href="#">Government (give gov contract)</a>
+            <a href="#" onclick="toggleMenu()">Free (we lose money)</a>
+            <a href="#" onclick="toggleMenu()">Pro — (with limits)</a>
+            <a href="#" onclick="toggleMenu()"
+              >Enterprise (we charge per token)</a
+            >
+            <a href="#" onclick="toggleMenu()"
+              >Government (give gov contract)</a
+            >
           </div>
         </div>
         <div class="mobile-nav-item">
-          <button type="button" class="mobile-nav-toggle" aria-expanded="false">
+          <button
+            type="button"
+            class="mobile-nav-toggle"
+            onclick="toggleMobileNav(this)"
+            aria-expanded="false"
+          >
             <span>About</span>
             <span class="mobile-chevron">
               <svg
@@ -776,145 +777,117 @@
             </span>
           </button>
           <div class="mobile-sub">
-            <a href="#">Our Story (made up)</a>
-            <a href="#">Careers (unpaid)</a>
-            <a href="#">Investor Relations</a>
+            <a href="#" onclick="toggleMenu()">Our Story (made up)</a>
+            <a href="#" onclick="toggleMenu()">Careers (unpaid)</a>
+            <a href="#" onclick="toggleMenu()">Investor Relations</a>
           </div>
         </div>
         <div class="mobile-auth">
-          <button type="button" class="auth-btn">Sign up</button>
+          <button type="button" onclick="toggleMenu()">Sign up</button>
         </div>
       </div>
     </div>
-
-    <main>
-      <section class="hero">
-        <div class="container">
-          <h1 class="animate-in delay-1">
-            We want to profit off<br />AI hype too.
-          </h1>
-          <p class="animate-in delay-2">
-            Please give us money (we have a nice webpage)
-          </p>
-        </div>
-      </section>
-
-      <section class="results-section">
-        <div class="container content">
-          <h2 class="animate-in">The results speak for themselves.</h2>
-          <p class="subtitle animate-in">Zucc, give us 1 billion dollard</p>
-
-          <h3 class="section-heading animate-in">FAQ</h3>
-
-          <div class="accordion-item">
-            <button
-              type="button"
-              class="accordion-toggle"
-              aria-expanded="false"
-            >
-              <span>Is this website even real?</span>
-              <span class="accordion-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 -960 960 960"
-                  width="24px"
-                >
-                  <path
-                    d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
-                  />
-                </svg>
-              </span>
-            </button>
-            <div class="accordion-content">
-              <p class="accordion-text">
-                Yes! It's very real. Very real indeed.
-              </p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button
-              type="button"
-              class="accordion-toggle"
-              aria-expanded="false"
-            >
-              <span>Are you alpha or sigma?</span>
-              <span class="accordion-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 -960 960 960"
-                  width="24px"
-                >
-                  <path
-                    d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
-                  />
-                </svg>
-              </span>
-            </button>
-            <div class="accordion-content">
-              <p class="accordion-text">
-                We're the alpha sigma omega gamma of websites.
-              </p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button
-              type="button"
-              class="accordion-toggle"
-              aria-expanded="false"
-            >
-              <span>You're just here to make money, aren't you?</span>
-              <span class="accordion-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 -960 960 960"
-                  width="24px"
-                >
-                  <path
-                    d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
-                  />
-                </svg>
-              </span>
-            </button>
-            <div class="accordion-content">
-              <p class="accordion-text">Obviously.</p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button
-              type="button"
-              class="accordion-toggle"
-              aria-expanded="false"
-            >
-              <span>Did AI make this site?</span>
-              <span class="accordion-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 -960 960 960"
-                  width="24px"
-                >
-                  <path
-                    d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
-                  />
-                </svg>
-              </span>
-            </button>
-            <div class="accordion-content">
-              <p class="accordion-text">
-                Yes, and it did a better job than we would have.
-              </p>
-            </div>
+    <section class="hero">
+      <div class="container">
+        <h1 class="animate-in delay-1">
+          We want to profit off<br />AI hype too.
+        </h1>
+        <p class="animate-in delay-2">
+          Please give us money (we have a nice webpage)
+        </p>
+      </div>
+    </section>
+    <section class="dark-content" id="darkSection">
+      <div class="container content">
+        <h2 class="animate-in">The results speak for themselves.</h2>
+        <p class="subtitle animate-in">Zucc, give us 1 billion dollard</p>
+        <h3 class="faq-heading animate-in">FAQ</h3>
+        <div class="faq-item">
+          <button type="button" onclick="toggleFAQ(this)" aria-expanded="false">
+            <span>Is this website even real?</span>
+            <span class="faq-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+              >
+                <path
+                  d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+                />
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p class="faq-text">Yes! It's very real. Very real indeed.</p>
           </div>
         </div>
-      </section>
-    </main>
-
+        <div class="faq-item">
+          <button type="button" onclick="toggleFAQ(this)" aria-expanded="false">
+            <span>Are you alpha or sigma?</span>
+            <span class="faq-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+              >
+                <path
+                  d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+                />
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p class="faq-text">
+              We're the alpha sigma omega gamma of websites.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" onclick="toggleFAQ(this)" aria-expanded="false">
+            <span>You're just here to make money, aren't you?</span>
+            <span class="faq-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+              >
+                <path
+                  d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+                />
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p class="faq-text">Obviously.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" onclick="toggleFAQ(this)" aria-expanded="false">
+            <span>Did AI make this site?</span>
+            <span class="faq-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+              >
+                <path
+                  d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+                />
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <p class="faq-text">
+              Yes, and it did a better job than we would have.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
     <footer>
       <div class="container footer-main">
         <div class="footer-brand">
@@ -950,133 +923,92 @@
         <span>Copythat © 2026 Aientic Inc. All money reserved.</span>
       </div>
     </footer>
-
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // Intersection Observer for animations
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-              }
-            });
-          },
-          { threshold: 0.1 },
-        );
-
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document
+        .querySelectorAll(".animate-in")
+        .forEach((el) => observer.observe(el));
+      const navbar = document.querySelector("header");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const darkSection = document.getElementById("darkSection");
+      const footer = document.querySelector("footer");
+      function updateNavbar() {
+        const isMobileMenuOpen = mobileMenu.classList.contains("open");
+        if (isMobileMenuOpen) {
+          navbar.classList.remove("dark-nav");
+        } else {
+          const scrollY = window.scrollY;
+          const transitionZone = 50;
+          const darkSectionTop = darkSection.offsetTop;
+          const footerTop = footer.offsetTop;
+          const isNearDarkSection =
+            scrollY >= darkSectionTop - transitionZone &&
+            scrollY <
+              darkSectionTop + darkSection.offsetHeight + transitionZone;
+          const isNearFooter =
+            scrollY >= footerTop - transitionZone &&
+            scrollY < footerTop + footer.offsetHeight + transitionZone;
+          if (isNearDarkSection || isNearFooter) {
+            navbar.classList.add("dark-nav");
+          } else {
+            navbar.classList.remove("dark-nav");
+          }
+        }
+      }
+      window.addEventListener("scroll", updateNavbar);
+      function toggleFAQ(button) {
+        const item = button.parentElement;
+        const isActive = item.classList.contains("active");
+        document.querySelectorAll(".faq-item").forEach((faq) => {
+          faq.classList.remove("active");
+          faq.querySelector("button").setAttribute("aria-expanded", "false");
+        });
+        if (!isActive) {
+          item.classList.add("active");
+          button.setAttribute("aria-expanded", "true");
+        }
+      }
+      function toggleMenu() {
+        const menu = document.getElementById("mobileMenu");
+        const isOpen = menu.classList.toggle("open");
+        document.body.classList.toggle("menu-open", isOpen);
         document
-          .querySelectorAll(".animate-in")
-          .forEach((el) => observer.observe(el));
-
-        // Navbar Logic
-        const navbar = document.querySelector("header");
-        const mobileMenu = document.getElementById("mobileMenu");
-        const resultsSection = document.querySelector(".results-section");
-        const footer = document.querySelector("footer");
-
-        function updateNavbar() {
-          const isMobileMenuOpen = mobileMenu.classList.contains("open");
-
-          if (!isMobileMenuOpen) {
-            const scrollY = window.scrollY;
-            const transitionZone = 50;
-            const resultsTop = resultsSection.offsetTop;
-            const footerTop = footer.offsetTop;
-
-            const isNearResults =
-              scrollY >= resultsTop - transitionZone &&
-              scrollY <
-                resultsTop + resultsSection.offsetHeight + transitionZone;
-
-            const isNearFooter =
-              scrollY >= footerTop - transitionZone &&
-              scrollY < footerTop + footer.offsetHeight + transitionZone;
-
-            if (isNearResults || isNearFooter) {
-              navbar.classList.add("dark-nav");
-            } else {
-              navbar.classList.remove("dark-nav");
-            }
-          }
+          .querySelector(".menu-toggle")
+          .setAttribute("aria-expanded", String(isOpen));
+        updateNavbar();
+      }
+      function toggleMobileNav(button) {
+        const item = button.parentElement;
+        const isActive = item.classList.contains("active");
+        document.querySelectorAll(".mobile-nav-item").forEach((el) => {
+          el.classList.remove("active");
+          el.querySelector(".mobile-nav-toggle").setAttribute(
+            "aria-expanded",
+            "false",
+          );
+        });
+        if (!isActive) {
+          item.classList.add("active");
+          button.setAttribute("aria-expanded", "true");
         }
-
-        window.addEventListener("scroll", updateNavbar, { passive: true });
-
-        // Accordion Logic
-        document.querySelectorAll(".accordion-toggle").forEach((button) => {
-          button.addEventListener("click", () => {
-            const item = button.parentElement;
-            const isActive = item.classList.contains("active");
-
-            // Close all others
-            document.querySelectorAll(".accordion-item").forEach((faq) => {
-              faq.classList.remove("active");
-              faq
-                .querySelector(".accordion-toggle")
-                .setAttribute("aria-expanded", "false");
-            });
-
-            // Toggle current
-            if (!isActive) {
-              item.classList.add("active");
-              button.setAttribute("aria-expanded", "true");
-            }
-          });
-        });
-
-        // Mobile Menu Logic
-        const menuToggleBtn = document.querySelector(".menu-toggle");
-
-        function toggleMenu() {
-          const isOpen = mobileMenu.classList.toggle("open");
-          document.body.classList.toggle("menu-open", isOpen);
-          menuToggleBtn.setAttribute("aria-expanded", String(isOpen));
+      }
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 550) {
+          mobileMenu.classList.remove("open");
+          document.body.classList.remove("menu-open");
+          document
+            .querySelector(".menu-toggle")
+            .setAttribute("aria-expanded", "false");
         }
-
-        menuToggleBtn.addEventListener("click", toggleMenu);
-
-        // Mobile Nav Submenus
-        document.querySelectorAll(".mobile-nav-toggle").forEach((button) => {
-          button.addEventListener("click", () => {
-            const item = button.parentElement;
-            const isActive = item.classList.contains("active");
-
-            document.querySelectorAll(".mobile-nav-item").forEach((el) => {
-              el.classList.remove("active");
-              el.querySelector(".mobile-nav-toggle").setAttribute(
-                "aria-expanded",
-                "false",
-              );
-            });
-
-            if (!isActive) {
-              item.classList.add("active");
-              button.setAttribute("aria-expanded", "true");
-            }
-          });
-        });
-
-        // Close menu on link click
-        document.querySelectorAll(".mobile-sub a").forEach((link) => {
-          link.addEventListener("click", toggleMenu);
-        });
-
-        // Auth Buttons
-        document.querySelectorAll(".auth-btn").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            window.location.href = "/login";
-          });
-        });
-
-        // Resize Handler
-        window.addEventListener("resize", () => {
-          if (window.innerWidth > 550) {
-            mobileMenu.classList.remove("open");
-            document.body.classList.remove("menu-open");
-            menuToggleBtn.setAttribute("aria-expanded", "false");
-          }
-        });
       });
     </script>
   </body>
