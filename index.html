@@ -58,20 +58,17 @@
         --transition-base: 0.3s ease;
         --transition-fast: 0.2s ease;
       }
-
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
-
       html,
       body {
         scroll-behavior: smooth;
         overflow-x: hidden;
         max-width: 100%;
       }
-
       body {
         font-family: var(--font-main);
         font-weight: var(--font-weight-regular);
@@ -80,19 +77,16 @@
         background: var(--color-bg);
         line-height: 1.5;
       }
-
       a {
         color: inherit;
         text-decoration: none;
       }
-
       .container {
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 clamp(2rem, 5vw, 5rem);
       }
-
       header {
         position: fixed;
         top: 0;
@@ -104,18 +98,15 @@
         -webkit-backdrop-filter: blur(10px);
         transition: background var(--transition-base);
       }
-
       header.dark-nav {
         background: var(--color-bg-overlay-dark);
       }
-
       header.dark-nav .navbar,
       header.dark-nav .logo,
       header.dark-nav .nav-links a,
       header.dark-nav .menu-toggle svg {
         color: var(--color-text-primary-dark);
       }
-
       .navbar {
         display: flex;
         align-items: center;
@@ -124,7 +115,6 @@
         padding: var(--space-md) 0;
         max-height: 5.9rem;
       }
-
       .logo {
         font-size: var(--font-size-xl);
         font-style: italic;
@@ -136,28 +126,23 @@
         min-width: max-content;
         transition: none;
       }
-
       .nav-links {
         display: flex;
         gap: var(--space-2xl);
         white-space: nowrap;
         flex-shrink: 0;
       }
-
       .nav-item {
         position: relative;
       }
-
       .nav-links a {
         font-size: var(--font-size-base);
         opacity: 0.7;
         transition: opacity var(--transition-base);
       }
-
       .nav-links a:hover {
         opacity: 1;
       }
-
       .dropdown {
         position: absolute;
         top: 100%;
@@ -172,13 +157,11 @@
           visibility 0.2s;
         z-index: 200;
       }
-
       .nav-item:hover .dropdown {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
       }
-
       .dropdown-inner {
         background: var(--color-bg-panel);
         border-radius: var(--radius-md);
@@ -188,15 +171,12 @@
         box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
         white-space: normal;
       }
-
       header.dark-nav .dropdown-inner {
         background: var(--color-bg-panel-dark);
       }
-
       .dropdown-col {
         min-width: 150px;
       }
-
       .dropdown-col h4 {
         font-size: var(--font-size-sm);
         font-weight: var(--font-weight-regular);
@@ -204,11 +184,9 @@
         letter-spacing: 0.03em;
         margin-bottom: var(--space-sm);
       }
-
       header.dark-nav .dropdown-col h4 {
         color: var(--color-text-subtitle-dark);
       }
-
       .dropdown-col a {
         display: block;
         font-size: var(--font-size-base);
@@ -217,11 +195,9 @@
         padding: 0.4rem 0;
         transition: color 0.2s;
       }
-
       header.dark-nav .dropdown-col a {
         color: var(--color-text-primary-dark);
       }
-
       .nav-auth {
         display: flex;
         align-items: center;
@@ -230,7 +206,6 @@
         padding: var(--space-md);
         flex-shrink: 0;
       }
-
       .nav-auth button {
         padding: var(--space-sm) var(--space-lg);
         border-radius: var(--radius-lg);
@@ -245,16 +220,13 @@
           background var(--transition-base),
           color var(--transition-base);
       }
-
       .nav-auth button:hover {
         background: var(--color-accent-hover);
       }
-
       header.dark-nav .nav-auth button {
         background: var(--color-accent-dark);
         color: var(--color-accent-text-dark);
       }
-
       .menu-toggle {
         display: none;
         background: none;
@@ -264,16 +236,13 @@
         padding: var(--space-md);
         flex-shrink: 0;
       }
-
       .menu-toggle svg {
         fill: var(--color-text-primary);
         transition: fill var(--transition-base);
       }
-
       header.dark-nav .menu-toggle svg {
         fill: var(--color-text-primary-dark);
       }
-
       .hero {
         height: 100vh;
         display: flex;
@@ -283,7 +252,6 @@
         text-align: center;
         padding: var(--space-5xl) 0 clamp(8rem, 12vw, 12rem);
       }
-
       .hero h1 {
         font-size: var(--font-size-4xl);
         line-height: 1.3;
@@ -291,32 +259,27 @@
         margin: var(--space-xl) auto var(--space-lg);
         font-weight: var(--font-weight-regular);
       }
-
       .hero p {
         font-size: var(--font-size-xl);
         color: var(--color-text-secondary);
         max-width: 600px;
         margin: 0 auto;
       }
-
       .dark-content {
         background: var(--color-bg-dark);
         color: var(--color-text-primary-dark);
         padding: var(--space-6xl) 0;
       }
-
       .dark-content .content {
         max-width: 60rem;
         margin: 0 auto;
       }
-
       .dark-content h2 {
         font-size: clamp(1.6rem, 3.5vw, var(--font-size-3xl));
         font-weight: var(--font-weight-regular);
         margin-top: var(--space-2xl);
         text-align: center;
       }
-
       .dark-content .subtitle {
         font-size: var(--font-size-xl);
         font-weight: var(--font-weight-regular);
@@ -324,18 +287,15 @@
         text-align: center;
         margin-bottom: var(--space-4xl);
       }
-
       .faq-heading {
         font-size: var(--font-size-3xl);
         margin: var(--space-3xl) 0 var(--space-lg);
         font-weight: var(--font-weight-regular);
       }
-
       .faq-item {
         border-top: 1px solid var(--color-border-dark);
         padding: var(--space-lg) 0;
       }
-
       .faq-item button {
         width: 100%;
         text-align: left;
@@ -351,7 +311,6 @@
         gap: var(--space-md);
         cursor: pointer;
       }
-
       .faq-answer {
         overflow: hidden;
         max-height: 0;
@@ -359,30 +318,24 @@
           max-height var(--transition-base),
           padding var(--transition-base);
       }
-
       .faq-item.active .faq-answer {
         max-height: 150px;
         padding-top: var(--space-md);
       }
-
       .faq-text {
         color: var(--color-text-subtitle-dark);
         padding: var(--space-md) 0;
       }
-
       .faq-icon {
         transition: transform var(--transition-base);
         flex-shrink: 0;
       }
-
       .faq-icon svg {
         fill: var(--color-text-primary-dark);
       }
-
       .faq-item.active .faq-icon {
         transform: rotate(180deg);
       }
-
       .mobile-menu {
         position: fixed;
         top: 0;
@@ -401,24 +354,19 @@
         overflow-y: auto;
         padding-top: 5rem;
       }
-
       .mobile-menu.open {
         visibility: visible;
         transform: translateX(0);
       }
-
       .mobile-menu-body {
         padding: 0 var(--space-lg) var(--space-3xl);
       }
-
       .mobile-nav-item {
         border-top: 1px solid var(--color-border-light);
       }
-
       .mobile-nav-item:last-of-type {
         border-bottom: 1px solid var(--color-border-light);
       }
-
       .mobile-nav-toggle {
         width: 100%;
         display: flex;
@@ -435,43 +383,35 @@
         cursor: pointer;
         text-align: left;
       }
-
       .mobile-chevron {
         flex-shrink: 0;
         color: var(--color-text-tertiary);
         transition: transform var(--transition-base);
       }
-
       .mobile-chevron svg {
         fill: var(--color-text-primary);
       }
-
       .mobile-nav-item.active .mobile-chevron {
         transform: rotate(180deg);
       }
-
       .mobile-sub {
         max-height: 0;
         overflow: hidden;
         transition: max-height var(--transition-base);
       }
-
       .mobile-nav-item.active .mobile-sub {
         max-height: 30rem;
         padding-bottom: var(--space-md);
       }
-
       .mobile-sub a {
         display: block;
         padding: var(--space-sm) 0;
         font-size: var(--font-size-base);
         color: var(--color-text-secondary);
       }
-
       .mobile-auth {
         padding: var(--space-lg) 0 var(--space-md);
       }
-
       .mobile-auth button {
         width: 100%;
         padding: 0.9rem;
@@ -484,14 +424,12 @@
         font-weight: var(--font-weight-regular);
         cursor: pointer;
       }
-
       footer {
         background: var(--color-bg-dark);
         color: var(--color-text-muted-dark);
         border-top: 1px solid var(--color-border);
         font-size: var(--font-size-base);
       }
-
       .footer-main {
         padding: var(--space-5xl) var(--space-lg) var(--space-3xl);
         display: grid;
@@ -501,14 +439,12 @@
           );
         gap: var(--space-2xl);
       }
-
       @media (max-width: 768px) {
         .footer-main {
           grid-template-columns: 1fr;
           gap: var(--space-3xl);
         }
       }
-
       .footer-brand .logo {
         font-size: var(--font-size-xl);
         font-style: italic;
@@ -518,21 +454,18 @@
         margin-bottom: var(--space-md);
         color: var(--color-text-primary-dark);
       }
-
       .footer-brand p {
         font-size: var(--font-size-base);
         color: var(--color-text-muted);
         max-width: 220px;
         line-height: 1.5;
       }
-
       .footer-col h4 {
         color: var(--color-text-primary-dark);
         font-size: var(--font-size-base);
         font-weight: var(--font-weight-regular);
         margin-bottom: 1.1rem;
       }
-
       .footer-col a {
         display: block;
         font-size: var(--font-size-base);
@@ -540,11 +473,9 @@
         padding: 0.4rem 0;
         transition: color var(--transition-fast);
       }
-
       .footer-col a:hover {
         color: var(--color-text-primary-dark);
       }
-
       .footer-bottom {
         padding: var(--space-lg);
         display: flex;
@@ -554,14 +485,12 @@
         gap: var(--space-md);
         font-size: var(--font-size-sm);
       }
-
       @media (max-width: 640px) {
         .footer-bottom {
           flex-direction: column;
           text-align: center;
         }
       }
-
       .animate-in {
         opacity: 0;
         transform: translateY(30px);
@@ -569,20 +498,16 @@
           opacity var(--transition-slow),
           transform var(--transition-slow);
       }
-
       .animate-in.visible {
         opacity: 1;
         transform: translateY(0);
       }
-
       .delay-1 {
         transition-delay: 0.2s;
       }
-
       .delay-2 {
         transition-delay: 0.5s;
       }
-
       @media (max-width: 550px) {
         .nav-links,
         .nav-auth {
@@ -592,13 +517,11 @@
           display: block;
         }
       }
-
       @media (min-width: 851px) {
         .mobile-menu {
           display: none;
         }
       }
-
       body.menu-open {
         overflow: hidden;
       }
@@ -655,9 +578,9 @@
                 <div class="dropdown-inner">
                   <div class="dropdown-col">
                     <h4>Company</h4>
-                    <a href="#">Our Story (made up)</a>
-                    <a href="#">Careers (unpaid)</a>
-                    <a href="#">Investor Relations</a>
+                    <a href="#">Our Story ( made up)</a>
+                    <a href="#">Careers (unpaid)」</a>
+                    <a href="#"> Investor Relations」</a>
                   </div>
                 </div>
               </div>
@@ -672,14 +595,13 @@
             type="button"
             class="menu-toggle"
             onclick="toggleMenu()"
-            aria-label="Open menu"
             aria-expanded="false"
             aria-controls="mobileMenu"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
-              viewBox="0 -960 960 960"
+              viewBox="0 -960 900 960"
               width="24px"
             >
               <path
@@ -779,9 +701,9 @@
             </span>
           </button>
           <div class="mobile-sub">
-            <a href="#" onclick="toggleMenu()">Our Story (made up)</a>
-            <a href="#" onclick="toggleMenu()">Careers (unpaid)</a>
-            <a href="#" onclick="toggleMenu()">Investor Relations</a>
+            <a href="#" onclick="toggleMenu()">Our Story ( made up)</a>
+            <a href="#" onclick="toggleMenu()">Careers (unpaid)」</a>
+            <a href="#" onclick="toggleMenu()"> Investor Relations)」</a>
           </div>
         </div>
         <div class="mobile-auth">
@@ -906,9 +828,9 @@
         </div>
         <div class="footer-col">
           <h4>Solutions</h4>
-          <a href="#">Startups (please invest)</a>
-          <a href="#">Enterprise (please invest more)</a>
-          <a href="#">Government (please buy us out)</a>
+          <a href="#"> Startups (please invest)</a>
+          <a href="#"> Enterprise (please invest more)</a>
+          <a href="#"> Government (please buy us out)</a>
         </div>
         <div class="footer-col">
           <h4>Resources</h4>
@@ -918,9 +840,9 @@
         </div>
         <div class="footer-col">
           <h4>Company</h4>
-          <a href="#">Our Story (made up)</a>
+          <a href="#">Our Story ( made up)</a>
           <a href="#">Careers (unpaid)</a>
-          <a href="#">Investor Relations</a>
+          <a href="#"> Investor Relations</a>
         </div>
       </div>
       <div class="container footer-bottom">
@@ -928,59 +850,53 @@
       </div>
     </footer>
     <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
-          });
-        },
-        { threshold: 0.1 },
-      );
-      document
-        .querySelectorAll(".animate-in")
-        .forEach((el) => observer.observe(el));
-      const navbar = document.querySelector("header");
-      const mobileMenu = document.getElementById("mobileMenu");
-      const darkSection = document.getElementById("darkSection");
-      const footer = document.querySelector("footer");
-      function updateNavbar() {
-        const isMobileMenuOpen = mobileMenu.classList.contains("open");
-        if (isMobileMenuOpen) {
-          navbar.classList.remove("dark-nav");
-        } else {
-          const scrollY = window.scrollY;
-          const transitionZone = 50;
-          const darkSectionTop = darkSection.offsetTop;
-          const footerTop = footer.offsetTop;
-          const isNearDarkSection =
-            scrollY >= darkSectionTop - transitionZone &&
-            scrollY <
-              darkSectionTop + darkSection.offsetHeight + transitionZone;
-          const isNearFooter =
-            scrollY >= footerTop - transitionZone &&
-            scrollY < footerTop + footer.offsetHeight + transitionZone;
-          if (isNearDarkSection || isNearFooter) {
-            navbar.classList.add("dark-nav");
-          } else {
-            navbar.classList.remove("dark-nav");
-          }
-        }
-      }
-      window.addEventListener("scroll", updateNavbar);
+      /**
+       * Accordion: toggle one at a time and update aria
+       */
       function toggleFAQ(button) {
         const item = button.parentElement;
-        const isActive = item.classList.contains("active");
-        document.querySelectorAll(".faq-item").forEach((faq) => {
-          faq.classList.remove("active");
-          faq.querySelector("button").setAttribute("aria-expanded", "false");
+        const isOpen = item.classList.contains("active");
+        document.querySelectorAll(".faq-item").forEach((el) => {
+          el.classList.remove("active");
+          el.querySelector("button").setAttribute("aria-expanded", "false");
         });
-        if (!isActive) {
+        if (!isOpen) {
           item.classList.add("active");
           button.setAttribute("aria-expanded", "true");
         }
       }
+
+      /**
+       * Scroll: toggle dark-nav based on section entry
+       */
+      function updateNavbar() {
+        const isMobile = document
+          .getElementById("mobileMenu")
+          .classList.contains("open");
+        if (isMobile) return;
+
+        const scrollY = window.scrollY;
+        const dark = document.getElementById("darkSection");
+        const footer = document.querySelector("footer");
+
+        const nearDark =
+          scrollY >= dark.offsetTop - 50 &&
+          scrollY < dark.offsetTop + dark.offsetHeight + 50;
+        const nearFooter =
+          scrollY >= footer.offsetTop - 50 &&
+          scrollY < footer.offsetTop + footer.offsetHeight + 50;
+
+        const header = document.querySelector("header");
+        if (nearDark || nearFooter) {
+          header.classList.add("dark-nav");
+        } else {
+          header.classList.remove("dark-nav");
+        }
+      }
+
+      /**
+       * Mobile: overlay toggle and viewport cleanup
+       */
       function toggleMenu() {
         const menu = document.getElementById("mobileMenu");
         const isOpen = menu.classList.toggle("open");
@@ -990,30 +906,49 @@
           .setAttribute("aria-expanded", String(isOpen));
         updateNavbar();
       }
+
       function toggleMobileNav(button) {
         const item = button.parentElement;
-        const isActive = item.classList.contains("active");
+        const isOpen = item.classList.contains("active");
         document.querySelectorAll(".mobile-nav-item").forEach((el) => {
           el.classList.remove("active");
           el.querySelector(".mobile-nav-toggle").setAttribute(
             "aria-expanded",
-            "false",
+            " false",
           );
         });
-        if (!isActive) {
+        if (!isOpen) {
           item.classList.add("active");
           button.setAttribute("aria-expanded", "true");
         }
       }
+
+      window.addEventListener("scroll", () => setTimeout(updateNavbar, 1));
+
       window.addEventListener("resize", () => {
         if (window.innerWidth > 550) {
-          mobileMenu.classList.remove("open");
+          const menu = document.getElementById("mobileMenu");
+          menu.classList.remove("open");
           document.body.classList.remove("menu-open");
           document
             .querySelector(".menu-toggle")
             .setAttribute("aria-expanded", "false");
         }
       });
+
+      // Animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      document
+        .querySelectorAll(".animate-in")
+        .forEach((el) => observer.observe(el));
     </script>
   </body>
 </html>
