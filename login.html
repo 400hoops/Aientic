@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Aientic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --color-accent: #000;
+        --color-accent-dark: #fff;
+        --color-accent-hover: #333;
+        --color-accent-text-dark: #000;
+        --color-bg: #f8f8f6;
+        --color-bg-dark: #000;
+        --color-bg-overlay: rgba(248, 248, 246, 0);
+        --color-border: #222;
+        --color-border-light: #eee;
+        --color-text-muted: #777;
+        --color-text-primary: #000;
+        --color-text-primary-dark: #fff;
+        --color-text-secondary: #666;
+        --font-main: font-family: "Playfair Display", serif;
+        --font-size-3xl: 2rem;
+        --font-size-lg: 1.35rem;
+        --font-size-base: 1.2rem;
+        --font-size-sm: 1rem;
+        --font-weight-bold: 500;
+        --font-weight-regular: 400;
+        --radius-lg: 9999px;
+        --radius-md: 12px;
+        --space-xl: 2rem;
+        --space-lg: 1.5rem;
+        --space-md: 1rem;
+        --space-sm: 0.5rem;
+        --transition-base: 0.3s ease;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        max-width: 100%;
+      }
+      body {
+        font-family: var(--font-main);
+        font-weight: var(--font-weight-regular);
+        font-size: var(--font-size-base);
+        color: var(--color-text-primary);
+        background: var(--color-bg);
+        line-height: 1.5;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      
+      /* Header - Minimalist */
+      header {
+        padding: var(--space-xl) clamp(2rem, 5vw, 5rem);
+        width: 100%;
+      }
+      .logo {
+        font-size: var(--font-size-lg);
+        font-style: italic;
+        font-weight: var(--font-weight-bold);
+        display: inline-block;
+      }
+
+      /* Main Layout */
+      .login-wrapper {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-xl) clamp(2rem, 5vw, 5rem);
+      }
+      .login-card {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .login-card h1 {
+        font-size: var(--font-size-3xl);
+        margin-bottom: var(--space-sm);
+        font-weight: var(--font-weight-regular);
+      }
+      .login-card .subtitle {
+        color: var(--color-text-secondary);
+        margin-bottom: var(--space-xl);
+        font-size: var(--font-size-lg);
+      }
+      
+      /* Form Components */
+      .form-group {
+        margin-bottom: var(--space-lg);
+        text-align: left;
+      }
+      .form-group label {
+        display: block;
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--space-sm);
+        color: var(--color-text-primary);
+      }
+      .form-input {
+        width: 100%;
+        padding: var(--space-md);
+        font-family: var(--font-main);
+        font-size: var(--font-size-base);
+        color: var(--color-text-primary);
+        background: transparent;
+        border: 1px solid var(--color-border-light);
+        border-radius: var(--radius-md);
+        outline: none;
+        transition: border-color var(--transition-base);
+        letter-spacing: 0.01em;
+        text-align: left; /* Centered text in input */
+      }
+      .form-input:focus {
+        border-color: var(--color-text-primary);
+      }
+      .form-input::placeholder {
+        color: var(--color-text-muted);
+      }
+      
+      .btn-login {
+        width: 100%;
+        padding: var(--space-md) var(--space-lg);
+        border-radius: var(--radius-lg);
+        border: none;
+        background: var(--color-accent);
+        color: var(--color-text-primary-dark);
+        font-family: var(--font-main);
+        font-size: var(--font-size-base);
+        font-weight: var(--font-weight-regular);
+        cursor: pointer;
+        transition: background var(--transition-base);
+        margin-top: var(--space-md);
+      }
+      .btn-login:hover {
+        background: var(--color-accent-hover);
+      }
+      
+      .divider {
+        display: flex;
+        align-items: center;
+        margin: var(--space-xl) 0;
+        color: var(--color-text-muted);
+        font-size: var(--font-size-sm);
+      }
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--color-border-light);
+      }
+      .divider span {
+        padding: 0 var(--space-md);
+      }
+      
+      .btn-outline {
+        width: 100%;
+        padding: var(--space-md) var(--space-lg);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--color-border);
+        background: transparent;
+        color: var(--color-text-primary);
+        font-family: var(--font-main);
+        font-size: var(--font-size-base);
+        font-weight: var(--font-weight-regular);
+        cursor: pointer;
+        transition: all var(--transition-base);
+      }
+      .btn-outline:hover {
+        background: var(--color-border);
+        color: var(--color-text-primary-dark);
+      }
+      
+      .form-links {
+        margin-top: var(--space-lg);
+        display: flex;
+        justify-content: center;
+        gap: var(--space-lg);
+        font-size: var(--font-size-sm);
+        color: var(--color-text-secondary);
+      }
+      .form-links a {
+        color: var(--color-text-primary);
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        transition: color var(--transition-base);
+      }
+      .form-links a:hover {
+        color: var(--color-text-secondary);
+      }
+
+      /* Footer - Minimalist */
+      .footer-bottom {
+        padding: var(--space-xl);
+        text-align: center;
+        color: var(--color-text-muted);
+        font-size: var(--font-size-sm);
+        margin-top: auto; /* Pushes footer to bottom */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">Aientic</a>
+    </header>
+
+    <main class="login-wrapper">
+      <div class="container">
+        <div class="login-card">
+          <h1>Welcome back.</h1>
+          <p class="subtitle">Please enter your credentials. We promise not to sell your data (yet).</p>
+
+          <form onsubmit="event.preventDefault();">
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" id="email" class="form-input" placeholder="you@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" class="form-input" placeholder="••••••••" required />
+            </div>
+
+            <button type="submit" class="btn-login">Log in</button>
+          </form>
+
+          <div class="divider"><span>or</span></div>
+
+          <button type="button" class="btn-outline">Continue with SSO</button>
+
+          <div class="form-links">
+            <a href="#">Forgot password?</a>
+            <a href="#">Create account</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="footer-bottom">
+      <span>© 2026 Aientic Inc. All money reserved.</span>
+    </div>
+  </body>
+</html>
